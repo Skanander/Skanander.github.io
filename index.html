@@ -1,13 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Skanander</title>
-<link rel="stylesheet" href="css/skanander.css">
-</head>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<p><a href="snake.html">Play Snake</a></p>
-</body>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>RevealJS Test</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<style>
+			:root {
+				--r-main-font-size: 112.5%;
+				--r-main-font: Georgia, 'Times New Roman', Times, serif;
+				--r-heading-font: Verdana, sans-serif;
+				--r-heading-font-weight: 700;
+				--r-font-weight: 400;
+				--r-heading2-size: 1.75rem;
+				--r-selection-background-color: rgba(211, 24, 24, 0.75);
+				--r-link-color: #df2020;
+				--r-main-color: #f7f7f7;
+				--r-heading-color: #f7f7f7;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				font-size: 1rem;
+				hyphens: auto;
+			}
+			h1, h2, h3, h4, h5, h6, p {
+				text-align: left;
+			}
+			section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
+				color: #3a3a3a;
+			}
+			.reveal p {
+				line-height: 1.35;
+			}
+			.slides {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				max-height: 100%;
+				max-width: 100%;
+			}
+			.reveal .slides > section {
+				padding: 20px 40px 80px 40px;
+			}
+			.reveal ul {
+				display: block;
+			}
+			.reveal .slides > .gradient-bg {
+				background: rgb(0,0,0);
+				background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.85) 70%);
+			}
+			.reveal .slides > section p {
+				margin: 0;
+				text-indent: 2.5rem;
+			}
+			.reveal .slides > section p:first-of-type {
+				text-indent: 0;
+			}
+			@media only screen and (min-width: 1024px) {
+				:root {
+					--r-main-font-size: 150%;
+					--r-heading2-size: 2.5rem;
+				}
+				
+				.reveal .slides > section {
+					padding: 80px 40% 80px 100px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+					<div>
+						<h2>DIGITAL GUIDE</h2>
+						<p>Detta är ett exempel på en digital guide. Tekniken skulle kunna användas som:</p>
+						<ul>
+							<li>Tillbehör vid besök i utställning</li>
+							<li>Skyltmaterial i utställning</li>
+							<li>En digital utställning/berättelse</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="gradient-bg" data-background-video="assets/blue.mp4" data-background-video-loop="true" data-background-opacity=".75">
+					<div>
+						<h2>VÄNERN BILDAS</h2>
+						<p>Vänern bildades efter den senaste istiden för omkring 10 000 år sedan. När isen smälte var Sverige täckt av en längsgående vattenmassa som skapade en förbindelse mellan Kattegatt och Bottenhavet.</p>
+					</div>
+				</section>
+
+				<section class="gradient-bg" data-background-video="assets/clouds.mp4" data-background-video-loop="true" data-background-opacity=".75">
+					<h2>FORNTIDA VÄNERN</h2>
+					<p>Vänern var efter sin tillkomst betydligt större än i dag, vilket beror på att landhöjningen är större i norr än vid utloppet i söder, och därför drar sig de norra stränderna tillbaka med tiden. Många platta områden i Värmland, Dalsland och Västergötland låg under den så kallade Storvänerns yta.</p>
+				</section>
+
+				<section class="gradient-bg" data-background-video="assets/mountains.mp4" data-background-video-loop="true" data-background-opacity=".75">
+					<h2>KINNEKULLE</h2>
+					<p>Namnet kommer av Kinne härad. Tidigare har den haft noanamnen Kinnebonde eller Bonden, då det ansågs att sjöfarare som uttalade det rätta namnet skulle råka ut för oväder och skeppsbrott.</p>
+			</div>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				scrollActivationWidth: null,
+				backgroundTransition: "fade",
+				transition: "fade",
+				width: 600,
+				height: 960,
+				margin: 0,
+				center: false,
+				minScale: 1,
+				maxScale: 1,
+				disableLayout: true,
+			});
+		</script>
+
+	</body>
 </html>
