@@ -2,11 +2,11 @@ window.addEventListener("DOMContentLoaded", async() => {
     const compass = new Compass();
     await compass.init();
 
-    let bearingToNorth = compass.getBearingToNorth();
-    console.log(bearingToNorth);
+    let heading = compass.getHeading();
+    console.log(heading);
 
     setInterval( () => {
-        bearingToNorth = compass.getBearingToNorth();
-        document.querySelector("#bearing").innerHTML = bearingToNorth.toString();
+        heading = compass.getHeading();
+        document.querySelector("#bearing").innerHTML = heading.toString();
     }, 100);
 });
