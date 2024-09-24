@@ -27,6 +27,7 @@ function startCompass() {
 
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+    compass = Math.trunc(compass);
     //compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
     document.querySelector("#bearing").innerHTML = compass.toString();
 
