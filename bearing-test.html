@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Coords</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+
+            #container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            #bearing {
+                font-size: 200%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <span id="bearing">#</span>
+        </div>
+        
+        <script src="js/compass.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
