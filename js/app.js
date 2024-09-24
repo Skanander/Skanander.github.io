@@ -1,21 +1,42 @@
-window.addEventListener("DOMContentLoaded", async() => {
-    const compass = new Compass();
-    await compass.init();
+const startBtn = document.querySelector(".start-btn");
+const isIOS =
+    navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
+    navigator.userAgent.match(/AppleWebKit/);
 
-    let heading = compass.getHeading();
-    console.log(heading);
+function init() {
+    startBtn.addEventListener("click", startCompass);
 
-    setInterval( () => {
-        heading = compass.getHeading();
-        document.querySelector("#bearing").innerHTML = heading.toString();
+    if (!isIOS) {
+        window.addEventListener("deviceorientationabsolute", handler, true);
+    }
+}
 
-        if (heading > 0 && heading < 100) {
-            document.body.style.backgroundColor = "yellow";
-        } else if (heading > 100 && heading < 200) {
-            document.body.style.backgroundColor = "lightblue";
-        } else if (heading > 200) {
-            document.body.style.backgroundColor = "lightgreen";
+function startCompass() {
+    if (isIOS) {
+    DeviceOrientationEvent.requestPermission()
+        .then((response) => {
+        if (response === "granted") {
+            window.addEventListener("deviceorientation", handler, true);
+        } else {
+            alert("has to be allowed!");
         }
+        })
+        .catch(() => alert("not supported"));
+    }
+}
 
-    }, 2000);
-});
+function handler(e) {
+    compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+    //compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
+    document.querySelector("#bearing").innerHTML = compass.toString();
+
+    if (compass > 0 && compass < 100) {
+        document.body.style.backgroundColor = "lightyellow";
+    } else if (compass > 100 && compass < 200) {
+        document.body.style.backgroundColor = "lightblue";
+    } else if (compass > 200) {
+        document.body.style.backgroundColor = "lightgreen";
+    }
+}
+
+init();
