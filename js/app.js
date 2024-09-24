@@ -31,12 +31,21 @@ function handler(e) {
     //compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
     document.querySelector("#bearing").innerHTML = compass.toString();
 
-    if (compass > 0 && compass < 100) {
-        document.body.style.backgroundColor = "lightyellow";
-    } else if (compass > 100 && compass < 200) {
+    if (compass > 155 && compass < 200) {
         document.body.style.backgroundColor = "lightblue";
-    } else if (compass > 200) {
-        document.body.style.backgroundColor = "lightgreen";
+        document.querySelector("#bearing").innerHTML = "KATA \n" + compass.toString();
+    } else if (compass > 225 && compass < 265) {
+        document.body.style.backgroundColor = "lightyellow";
+        document.querySelector("#bearing").innerHTML = "KISTA \n" + compass.toString();
+    } else if (compass > 300 && compass < 330) {
+        document.body.style.backgroundColor = "lightblue";
+        document.querySelector("#bearing").innerHTML = "KYRKA \n" + compass.toString();
+    } else if (compass > 85 && compass < 115) {
+        document.body.style.backgroundColor = "lightyellow";
+        document.querySelector("#bearing").innerHTML = "STOL \n" + compass.toString();
+    } else if (compass > 115 && compass < 135) {
+        document.body.style.backgroundColor = "lightblue";
+        document.querySelector("#bearing").innerHTML = "FYND \n" + compass.toString();
     }
 }
 
