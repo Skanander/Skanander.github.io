@@ -8,5 +8,5 @@ window.addEventListener("DOMContentLoaded", async() => {
     setInterval( () => {
         heading = compass.getHeading();
         document.querySelector("#bearing").innerHTML = heading.toString();
-    }, 100);
+    }, 2000);
 });
