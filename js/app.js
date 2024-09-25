@@ -4,6 +4,40 @@ const isIOS =
     navigator.userAgent.match(/AppleWebKit/);
 
 let lastTime = 0;
+let compass = 0;
+
+let items = [
+    {
+        name: "",
+        num: 0,
+        color: "white"
+    },
+    {
+        name: "Stol",
+        num: 120,
+        color: "wheat"
+    },
+    {
+        name: "Fynd",
+        num: 150,
+        color: "lightgreen"
+    },
+    {
+        name: "Kata",
+        num: 190,
+        color: "lightyellow"
+    },
+    {
+        name: "Kista",
+        num: 250,
+        color: "lightblue"
+    },
+    {
+        name: "Kyrka",
+        num: 300,
+        color: "lightpink"
+    }
+];
 
 function init() {
     startBtn.addEventListener("click", startCompass);
@@ -30,59 +64,14 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
-
-    let items = [
-        {
-            name: "",
-            num: 0,
-            color: "white"
-        },
-        {
-            name: "Stol",
-            num: 120,
-            color: "wheat"
-        },
-        {
-            name: "Fynd",
-            num: 150,
-            color: "lightgreen"
-        },
-        {
-            name: "Kata",
-            num: 190,
-            color: "lightyellow"
-        },
-        {
-            name: "Kista",
-            num: 250,
-            color: "lightblue"
-        },
-        {
-            name: "Kyrka",
-            num: 300,
-            color: "lightpink"
-        }
-    ];
-
-    debounce_leading(() => printItem(items, compass));
 }
 
-function debounce_leading(func, timeout = 300){
-    let timer;
-    return (...args) => {
-        if (!timer) {
-            func.apply(this, args);
-        }
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            timer = undefined;
-        }, timeout);
-    };
-}
-  
+setTimeout(function() {
+    printItem(items, compass);
+}, 3000);
 
-function printItem(items, compass) {
-    let print = getClosest(items, compass);
+function printItem(items, i) {
+    let print = getClosest(items, i);
     document.querySelector("#bearing").innerHTML = print.name;
     document.body.style.backgroundColor = print.color;
 }
