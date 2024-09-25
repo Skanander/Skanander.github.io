@@ -66,7 +66,7 @@ function handler(e) {
     compass = Math.trunc(compass);
 }
 
-setTimeout(function() {
+setInterval(function() {
     printItem(items, compass);
 }, 3000);
 
