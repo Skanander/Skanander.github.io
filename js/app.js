@@ -32,20 +32,22 @@ function handler(e) {
     document.querySelector("#bearing").innerHTML = compass.toString();
 
     if (compass > 155 && compass < 200) {
-        document.body.style.backgroundColor = "lightblue";
+        document.body.style.backgroundColor = "lightred";
         document.querySelector("#bearing").innerHTML = "KATA \n" + compass.toString();
     } else if (compass > 225 && compass < 265) {
-        document.body.style.backgroundColor = "lightyellow";
+        document.body.style.backgroundColor = "lightred";
         document.querySelector("#bearing").innerHTML = "KISTA \n" + compass.toString();
     } else if (compass > 300 && compass < 330) {
-        document.body.style.backgroundColor = "lightblue";
+        document.body.style.backgroundColor = "lightred";
         document.querySelector("#bearing").innerHTML = "KYRKA \n" + compass.toString();
     } else if (compass > 85 && compass < 115) {
-        document.body.style.backgroundColor = "lightyellow";
+        document.body.style.backgroundColor = "lightred";
         document.querySelector("#bearing").innerHTML = "STOL \n" + compass.toString();
     } else if (compass > 115 && compass < 135) {
-        document.body.style.backgroundColor = "lightblue";
+        document.body.style.backgroundColor = "lightred";
         document.querySelector("#bearing").innerHTML = "FYND \n" + compass.toString();
+    } else {
+        document.body.style.backgroundColor = "white";
     }
 }
 
