@@ -62,7 +62,7 @@ function handler(e) {
         }
     ];
 
-    setInterval(printItem, 3000, items, compass);
+    printItem(items, compass);
 }
 
 function printItem(items, compass) {
