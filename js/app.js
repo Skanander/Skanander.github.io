@@ -86,7 +86,7 @@ function proximityTo(bearing) {
         return acc;
     },{ diff: Number.MAX_SAFE_INTEGER, item: null });
 
-    return result.item;
+    return result.item.name;
 }
 
 init();
