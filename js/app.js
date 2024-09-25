@@ -28,52 +28,42 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
-    //compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
-    document.querySelector("#bearing").innerHTML = compass.toString();
 
-    /*
-    if (compass > 155 && compass < 200) {
-        document.body.style.backgroundColor = "lightred";
-        document.querySelector("#bearing").innerHTML = "KATA \n" + compass.toString();
-    } else if (compass > 225 && compass < 265) {
-        document.body.style.backgroundColor = "lightred";
-        document.querySelector("#bearing").innerHTML = "KISTA \n" + compass.toString();
-    } else if (compass > 300 && compass < 330) {
-        document.body.style.backgroundColor = "lightred";
-        document.querySelector("#bearing").innerHTML = "KYRKA \n" + compass.toString();
-    } else if (compass > 85 && compass < 115) {
-        document.body.style.backgroundColor = "lightred";
-        document.querySelector("#bearing").innerHTML = "STOL \n" + compass.toString();
-    } else if (compass > 115 && compass < 135) {
-        document.body.style.backgroundColor = "lightred";
-        document.querySelector("#bearing").innerHTML = "FYND \n" + compass.toString();
-    } else {
-        document.body.style.backgroundColor = "white";
-    }*/
     let items = [
         {
             name: "Stol",
-            num: 120
+            num: 120,
+            color: "lightred"
         },
         {
             name: "Fynd",
-            num: 150
+            num: 150,
+            color: "lightgreen"
         },
         {
             name: "Kata",
-            num: 190
+            num: 190,
+            color: "lightyellow"
         },
         {
             name: "Kista",
-            num: 250
+            num: 250,
+            color: "lightblue"
         },
         {
             name: "Kyrka",
-            num: 300
+            num: 300,
+            color: "lightpink"
         }
     ];
+
+    setInterval(printItem, 3000, items, compass);
+}
+
+function printItem(items, compass) {
     let print = getClosest(items, compass);
-    document.querySelector("#bearing").innerHTML = print.name.toString();
+    document.querySelector("#bearing").innerHTML = print.name;
+    document.body.style.backgroundColor = print.color;
 }
 
 const getClosest = (data, target) => 
