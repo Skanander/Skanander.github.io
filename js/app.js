@@ -64,16 +64,22 @@ function handler(e) {
         }
     ];
 
-    debounce(() => printItem(items, compass));
+    debounce_leading(() => printItem(items, compass));
 }
 
-function debounce(func, timeout = 3000){
+function debounce_leading(func, timeout = 300){
     let timer;
     return (...args) => {
+        if (!timer) {
+            func.apply(this, args);
+        }
         clearTimeout(timer);
-        timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        timer = setTimeout(() => {
+            timer = undefined;
+        }, timeout);
     };
 }
+  
 
 function printItem(items, compass) {
     let print = getClosest(items, compass);
