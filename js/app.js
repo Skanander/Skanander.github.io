@@ -31,6 +31,11 @@ function handler(e) {
 
     let items = [
         {
+            name: "",
+            num: 0,
+            color: "white"
+        },
+        {
             name: "Stol",
             num: 120,
             color: "lightred"
