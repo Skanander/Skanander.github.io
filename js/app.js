@@ -64,24 +64,21 @@ function handler(e) {
         }
     ];
 
-    if (timePassed) {
-        printItem(items, compass);
-    }
+    debounce(() => printItem(items, compass));
+}
+
+function debounce(func, timeout = 3000){
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
 }
 
 function printItem(items, compass) {
     let print = getClosest(items, compass);
     document.querySelector("#bearing").innerHTML = print.name;
     document.body.style.backgroundColor = print.color;
-}
-
-function timePassed() {
-    if ( Math.floor((new Date() - lastTime)/600000) < 3 ) {
-        return false;
-    } else {
-        lastTime =  new Date();
-        return true;
-    }
 }
 
 const getClosest = (data, target) => 
