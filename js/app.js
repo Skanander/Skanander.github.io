@@ -3,6 +3,8 @@ const isIOS =
     navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
     navigator.userAgent.match(/AppleWebKit/);
 
+let lastTime = 0;
+
 function init() {
     startBtn.addEventListener("click", startCompass);
 
@@ -62,13 +64,24 @@ function handler(e) {
         }
     ];
 
-    printItem(items, compass);
+    if (timePassed) {
+        printItem(items, compass);
+    }
 }
 
 function printItem(items, compass) {
     let print = getClosest(items, compass);
     document.querySelector("#bearing").innerHTML = print.name;
     document.body.style.backgroundColor = print.color;
+}
+
+function timePassed() {
+    if ( Math.floor((new Date() - lastTime)/600000) < 3 ) {
+        return false;
+    } else {
+        lastTime =  new Date();
+        return true;
+    }
 }
 
 const getClosest = (data, target) => 
