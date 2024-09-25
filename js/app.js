@@ -31,6 +31,7 @@ function handler(e) {
     //compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
     document.querySelector("#bearing").innerHTML = compass.toString();
 
+    /*
     if (compass > 155 && compass < 200) {
         document.body.style.backgroundColor = "lightred";
         document.querySelector("#bearing").innerHTML = "KATA \n" + compass.toString();
@@ -48,7 +49,44 @@ function handler(e) {
         document.querySelector("#bearing").innerHTML = "FYND \n" + compass.toString();
     } else {
         document.body.style.backgroundColor = "white";
-    }
+    }*/
+
+    let print = proximityTo(compass);
+    document.querySelector("#bearing").innerHTML = print.toString();
+}
+
+function proximityTo(bearing) {
+    let items = [
+        {
+            name: "Stol",
+            num: 120
+        },
+        {
+            name: "Fynd",
+            num: 150
+        },
+        {
+            name: "Kata",
+            num: 190
+        },
+        {
+            name: "Kista",
+            num: 250
+        },
+        {
+            name: "Kyrka",
+            num: 300
+        }
+    ];
+
+    const result = items.reduce ( (acc,item) => {
+        const diff = bearing - item.num;
+        if(item.num < bearing && diff < acc.diff)
+           acc = {diff,  item}
+        return acc;
+    },{ diff: Number.MAX_SAFE_INTEGER, item: null });
+
+    return result.item;
 }
 
 init();
