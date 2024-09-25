@@ -64,11 +64,8 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
-}
-
-setInterval(function() {
     printItem(items, compass);
-}, 3000);
+}
 
 function printItem(items, i) {
     let print = getClosest(items, i);
