@@ -38,7 +38,7 @@ function handler(e) {
         {
             name: "Stol",
             num: 120,
-            color: "lightred"
+            color: "wheat"
         },
         {
             name: "Fynd",
