@@ -50,12 +50,6 @@ function handler(e) {
     } else {
         document.body.style.backgroundColor = "white";
     }*/
-
-    let print = proximityTo(compass);
-    document.querySelector("#bearing").innerHTML = print.toString();
-}
-
-function proximityTo(bearing) {
     let items = [
         {
             name: "Stol",
@@ -78,15 +72,13 @@ function proximityTo(bearing) {
             num: 300
         }
     ];
-
-    const result = items.reduce ( (acc,item) => {
-        const diff = bearing - item.num;
-        if(item.num < bearing && diff < acc.diff)
-           acc = {diff,  item}
-        return acc;
-    },{ diff: Number.MAX_SAFE_INTEGER, item: null });
-
-    return result.item.name;
+    let print = getClosest(items, compass);
+    document.querySelector("#bearing").innerHTML = print.name.toString();
 }
+
+const getClosest = (data, target) => 
+    data.reduce((acc, obj) =>
+       Math.abs(target - obj.num) < Math.abs(target - acc.num) ? obj : acc
+    );
 
 init();
