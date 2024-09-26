@@ -7,6 +7,7 @@ let target = "";
 let lastTarget = "";
 let compass = 0;
 let now = null;
+let requiredTime = 3000;
 
 let items = [
     {
@@ -66,34 +67,18 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
-    checkItem(items, compass);
-}
-
-function checkItem(items, i) {
     target = getClosest(items, i);
-    let targetName = target.name;
     if (lastTarget == "") {
-        lastTarget = targetName;
-    } else if (lastTarget == targetName) {
-        now = null;
-    } else {
-        document.getElementById("console").innerHTML = "New target " + targetName;
+        lastTarget = target.name;
+    }
+    if (target.name != lastTarget) {
         if (!now) {
             now = Date.now();
+        } else if (now + requiredTime < Date.now()) {
+            printItem(target);
+        } else {
+            now = null;
         }
-        evalTimeOnTarget(now, 3000, target);
-    }
-}
-
-function evalTimeOnTarget(now, requiredTime, t) {
-    if (now + requiredTime < Date.now()) {
-        printItem(t);
-    }
-}
-
-function evalTarget(t, lt) {
-    if (t.name != lt) {
-        printItem(t);
     }
 }
 
