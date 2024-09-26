@@ -46,10 +46,6 @@ function init() {
     if (!isIOS) {
         window.addEventListener("deviceorientationabsolute", handler, true);
     }
-
-    setInterval(function() {
-        checkItem(items, compass);
-    }, 1000);
 }
 
 function startCompass() {
@@ -69,9 +65,10 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
+    checkItem(items, compass);
 }
 
-function checkItem(items, i) {
+async function checkItem(items, i) {
     target = getClosest(items, i);
     let targetName = target.name;
     if (lastTarget == "") {
@@ -79,7 +76,15 @@ function checkItem(items, i) {
     } else if (lastTarget == targetName) {
         return;
     } else {
+        document.getElementById("console").innerHTML = "New target " + targetName;
+        let delayres = await delay(3000);
         printItem(target);
+    }
+}
+
+function evalTarget(t, lt) {
+    if (t.name != lt) {
+        printItem(t);
     }
 }
 
@@ -87,6 +92,10 @@ function printItem(t) {
     document.querySelector("#bearing").innerHTML = t.name;
     document.body.style.backgroundColor = t.color;
 }
+
+const delay = (delayInms) => {
+    return new Promise(resolve => setTimeout(resolve, delayInms));
+};
 
 const getClosest = (data, target) => 
     data.reduce((acc, obj) =>
