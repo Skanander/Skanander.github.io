@@ -47,7 +47,9 @@ function init() {
         window.addEventListener("deviceorientationabsolute", handler, true);
     }
 
-    setInterval(checkItem, 3000, items, compass);
+    setInterval(function() {
+        checkItem(items, compass);
+    }, 3000);
 }
 
 function startCompass() {
