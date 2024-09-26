@@ -72,9 +72,9 @@ function handler(e) {
             now = Date.now();
         } else if (now + requiredTime < Date.now()) {
             printItem(target);
-        } else {
-            now = null;
         }
+    } else if (target.name == lastTarget) {
+        now = null;
     }
 }
 
