@@ -68,7 +68,7 @@ function handler(e) {
     checkItem(items, compass);
 }
 
-async function checkItem(items, i) {
+function checkItem(items, i) {
     target = getClosest(items, i);
     let targetName = target.name;
     if (lastTarget == "") {
@@ -77,13 +77,13 @@ async function checkItem(items, i) {
         return;
     } else {
         document.getElementById("console").innerHTML = "New target " + targetName;
-        let delayres = await delay(3000);
-        printItem(target);
+        evalTarget(target, lastTarget);
     }
 }
 
-function evalTarget(t, lt) {
+async function evalTarget(t, lt) {
     if (t.name != lt) {
+        let delayres = await delay(3000);
         printItem(t);
     }
 }
