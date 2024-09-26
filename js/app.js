@@ -11,11 +11,6 @@ let requiredTime = 3000;
 
 let items = [
     {
-        name: "",
-        num: 0,
-        color: "white"
-    },
-    {
         name: "Stol",
         num: 120,
         color: "wheat"
@@ -68,6 +63,7 @@ function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
     target = getClosest(items, i);
+    document.getElementById("console").innerHTML = " Targeting " + target.name;
     if (lastTarget == "") {
         lastTarget = target.name;
     }
