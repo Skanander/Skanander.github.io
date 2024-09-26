@@ -62,7 +62,7 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
-    target = getClosest(items, i);
+    target = getClosest(items, compass);
     document.getElementById("console").innerHTML = " Targeting " + target.name;
     if (lastTarget == "") {
         lastTarget = target.name;
