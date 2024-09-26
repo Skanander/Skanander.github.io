@@ -3,7 +3,8 @@ const isIOS =
     navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
     navigator.userAgent.match(/AppleWebKit/);
 
-let lastTime = 0;
+let target = "";
+let lastTarget = "";
 let compass = 0;
 
 let items = [
@@ -64,13 +65,30 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
-    printItem(items, compass);
+    checkItem(items, compass);
 }
 
-function printItem(items, i) {
-    let print = getClosest(items, i);
-    document.querySelector("#bearing").innerHTML = print.name;
-    document.body.style.backgroundColor = print.color;
+function checkItem(items, i) {
+    target = getClosest(items, i);
+    let targetName = target.name;
+    if (lastTarget == "") {
+        lastTarget = targetName;
+    } else if (lastTarget == targetName) {
+        return;
+    } else {
+        setTimeout(evalTarget, 3000, target, lastTarget);
+    }
+}
+
+function evalTarget(t, lt) {
+    if (t.name != lt) {
+        printItem(t);
+    }
+}
+
+function printItem(t) {
+    document.querySelector("#bearing").innerHTML = t.name;
+    document.body.style.backgroundColor = t.color;
 }
 
 const getClosest = (data, target) => 
