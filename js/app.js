@@ -46,6 +46,8 @@ function init() {
     if (!isIOS) {
         window.addEventListener("deviceorientationabsolute", handler, true);
     }
+
+    setInterval(checkItem, 3000, items, compass);
 }
 
 function startCompass() {
@@ -65,7 +67,6 @@ function startCompass() {
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
-    checkItem(items, compass);
 }
 
 function checkItem(items, i) {
@@ -76,13 +77,7 @@ function checkItem(items, i) {
     } else if (lastTarget == targetName) {
         return;
     } else {
-        setTimeout(evalTarget, 3000, target, lastTarget);
-    }
-}
-
-function evalTarget(t, lt) {
-    if (t.name != lt) {
-        printItem(t);
+        printItem(target);
     }
 }
 
