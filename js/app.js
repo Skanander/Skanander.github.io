@@ -6,8 +6,8 @@ const isIOS =
 let target = "";
 let lastTarget = "";
 let compass = 0;
-let now = null;
-let requiredTime = 3000;
+let limit = 10;
+let ticks = 0;
 
 let items = [
     {
@@ -59,23 +59,22 @@ function startCompass() {
     }
 }
 
+const clock = setInterval(function() {
+    if (target != "" && target != lastTarget) {
+        ticks++;
+        if (ticks >= 10) {
+            printItem(target);
+        }
+    } else if (target == lastTarget) {
+        ticks = 0;
+    }
+}, 300);
+
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
     target = getClosest(items, compass);
     document.getElementById("console").innerHTML = " Targeting " + target.name;
-    if (lastTarget == "") {
-        lastTarget = target.name;
-    }
-    if (target.name != lastTarget) {
-        if (!now) {
-            now = Date.now();
-        } else if (now + requiredTime < Date.now()) {
-            printItem(target);
-        }
-    } else if (target.name == lastTarget) {
-        now = null;
-    }
 }
 
 function printItem(t) {
