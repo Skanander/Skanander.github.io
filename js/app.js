@@ -82,8 +82,8 @@ function checkItem(items, i) {
 }
 
 async function evalTarget(t, lt) {
+    let delayres = await delay(3000);
     if (t.name != lt) {
-        let delayres = await delay(3000);
         printItem(t);
     }
 }
