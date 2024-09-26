@@ -49,7 +49,7 @@ function init() {
 
     setInterval(function() {
         checkItem(items, compass);
-    }, 3000);
+    }, 1000);
 }
 
 function startCompass() {
