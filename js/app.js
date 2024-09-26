@@ -3,7 +3,7 @@ const isIOS =
     navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
     navigator.userAgent.match(/AppleWebKit/);
 
-let target = "";
+let target;
 let lastTarget = "";
 let compass = 0;
 let limit = 10;
@@ -60,12 +60,12 @@ function startCompass() {
 }
 
 const clock = setInterval(function() {
-    if (target != "" && target != lastTarget) {
+    if (target.name != "" && target.name != lastTarget) {
         ticks++;
         if (ticks >= 10) {
             printItem(target);
         }
-    } else if (target == lastTarget) {
+    } else if (target.name == lastTarget) {
         ticks = 0;
     }
 }, 300);
