@@ -6,6 +6,7 @@ const isIOS =
 let target = "";
 let lastTarget = "";
 let compass = 0;
+let now = null;
 
 let items = [
     {
@@ -74,15 +75,23 @@ function checkItem(items, i) {
     if (lastTarget == "") {
         lastTarget = targetName;
     } else if (lastTarget == targetName) {
-        return;
+        now = null;
     } else {
         document.getElementById("console").innerHTML = "New target " + targetName;
-        evalTarget(target, lastTarget);
+        if (!now) {
+            now = Date.now();
+        }
+        evalTimeOnTarget(now, 3000, target);
     }
 }
 
-async function evalTarget(t, lt) {
-    let delayres = await delay(3000);
+function evalTimeOnTarget(now, requiredTime, t) {
+    if (now + requiredTime < Date.now()) {
+        printItem(t);
+    }
+}
+
+function evalTarget(t, lt) {
     if (t.name != lt) {
         printItem(t);
     }
