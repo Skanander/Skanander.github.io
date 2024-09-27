@@ -139,6 +139,10 @@ function init() {
     });
 
     deck1.initialize();
+    deck2.initialize();
+    deck3.initialize();
+    deck4.initialize();
+    deck5.initialize();
     document.querySelector('.deck1').style.display = "block";
     currentDeck = deck1;
 
@@ -197,7 +201,6 @@ function handler(e) {
 }
 
 function printItem(t) {
-    currentDeck.destroy();
     if (currentDeck == deck1) {
         document.getElementsByClassName("deck1")[0].style.display = "none";
     } else {
@@ -207,7 +210,6 @@ function printItem(t) {
             }
         }
     }
-    t.deckNum.initialize();
     document.getElementsByClassName(t.className)[0].style.display = "block";
     currentDeck = t.deckNum;
 }
