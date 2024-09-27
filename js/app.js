@@ -80,6 +80,7 @@ const clock = setInterval(function() {
             printItem(target);
             lastTarget = target.name;
             barAnimationCounter = 0;
+            bar.animate(barAnimationCounter);
         }
     } else {
         ticks = 0;
