@@ -18,26 +18,81 @@ let lastDeck;
 let deck1 = new Reveal(document.querySelector('.deck1'), {
     embedded: true,
     keyboardCondition: 'focused',
+    hash: true,
+    scrollActivationWidth: null,
+    backgroundTransition: "fade",
+    transition: "fade",
+    width: 600,
+    height: 960,
+    margin: 0,
+    center: false,
+    minScale: 1,
+    maxScale: 1,
+    disableLayout: true,
 });
 
 let deck2 = new Reveal(document.querySelector('.deck2'), {
     embedded: true,
     keyboardCondition: 'focused',
+    hash: true,
+    scrollActivationWidth: null,
+    backgroundTransition: "fade",
+    transition: "fade",
+    width: 600,
+    height: 960,
+    margin: 0,
+    center: false,
+    minScale: 1,
+    maxScale: 1,
+    disableLayout: true,
 });
 
 let deck3 = new Reveal(document.querySelector('.deck3'), {
     embedded: true,
     keyboardCondition: 'focused',
+    hash: true,
+    scrollActivationWidth: null,
+    backgroundTransition: "fade",
+    transition: "fade",
+    width: 600,
+    height: 960,
+    margin: 0,
+    center: false,
+    minScale: 1,
+    maxScale: 1,
+    disableLayout: true,
 });
 
 let deck4 = new Reveal(document.querySelector('.deck4'), {
     embedded: true,
     keyboardCondition: 'focused',
+    hash: true,
+    scrollActivationWidth: null,
+    backgroundTransition: "fade",
+    transition: "fade",
+    width: 600,
+    height: 960,
+    margin: 0,
+    center: false,
+    minScale: 1,
+    maxScale: 1,
+    disableLayout: true,
 });
 
 let deck5 = new Reveal(document.querySelector('.deck5'), {
     embedded: true,
     keyboardCondition: 'focused',
+    hash: true,
+    scrollActivationWidth: null,
+    backgroundTransition: "fade",
+    transition: "fade",
+    width: 600,
+    height: 960,
+    margin: 0,
+    center: false,
+    minScale: 1,
+    maxScale: 1,
+    disableLayout: true,
 });
 
 let items = [
