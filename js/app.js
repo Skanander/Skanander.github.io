@@ -1,4 +1,4 @@
-const startBtn = document.querySelector(".start-btn");
+const startBtn = document.getElementById("start-btn");
 const isIOS =
     navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
     navigator.userAgent.match(/AppleWebKit/);
@@ -13,22 +13,26 @@ let items = [
     {
         name: "Stol",
         num: 120,
-        color: "wheat"
+        color: "wheat",
+        slideNum: 1
     },
     {
         name: "Kata",
         num: 190,
-        color: "lightyellow"
+        color: "lightyellow",
+        slideNum: 2
     },
     {
         name: "Kista",
         num: 250,
-        color: "lightblue"
+        color: "lightblue",
+        slideNum: 3
     },
     {
         name: "Kyrka",
         num: 300,
-        color: "lightpink"
+        color: "lightpink",
+        slideNum: 4
     }
 ];
 
@@ -36,6 +40,7 @@ function init() {
     startBtn.addEventListener("click", startCompass);
 
     if (!isIOS) {
+        startBtn.parentElement.removeChild(startBtn);
         window.addEventListener("deviceorientationabsolute", handler, true);
     }
 }
@@ -45,6 +50,7 @@ function startCompass() {
     DeviceOrientationEvent.requestPermission()
         .then((response) => {
         if (response === "granted") {
+            startBtn.parentElement.removeChild(startBtn);
             window.addEventListener("deviceorientation", handler, true);
         } else {
             alert("has to be allowed!");
@@ -77,8 +83,7 @@ function handler(e) {
 }
 
 function printItem(t) {
-    document.querySelector("#bearing").innerHTML = t.name;
-    document.body.style.backgroundColor = t.color;
+    Reveal.slide
 }
 
 const delay = (delayInms) => {
