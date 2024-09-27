@@ -168,7 +168,7 @@ function init() {
                 bar.animate(barAnimationCounter);
                 ticks = 0;
             }
-        }, 300);
+        }, 200);
     } else {
         document.querySelector('#console').innerHTML = "<span style='color:black;'>Den här bildguiden är endast tillgänglig på mobila enheter.</span>";
     }
