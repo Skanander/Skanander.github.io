@@ -101,6 +101,22 @@
                 margin-left: -50px;
                 z-index: 9000;
             }
+            .background-pulse {
+                animation: pulsate-fwd 5s ease-in-out infinite both;
+                background-position: center center;
+            }
+            @keyframes pulsate-fwd {
+                0% {
+                    background-size: 100%;
+                }
+                50% {
+                    background-size: 105%;
+                }
+                100% {
+                    background-size: 100%;
+                }
+            }
+
 		</style>
 	</head>
 
@@ -119,28 +135,28 @@
 					</div>
 				</section>
 
-				<section class="gradient-bg" data-background-video="assets/blue.mp4" data-background-video-loop="true" data-background-opacity=".75">
+				<section class="gradient-bg background-pulse" data-background-image="assets/suntak.jpg" data-background-opacity=".90">
 					<div>
 						<h2>STOL</h2>
-						<p>Här finns det lite mer att läsa om Suntaksstolen.</p>
+						<p>Här finns det lite mer att läsa om Suntakstolen.</p>
 					</div>
 				</section>
 
-                <section class="gradient-bg" data-background-video="assets/clouds.mp4" data-background-video-loop="true" data-background-opacity=".75">
+                <section class="gradient-bg background-pulse" data-background-image="assets/kata.jpg" data-background-opacity=".90">
 					<div>
 						<h2>KATA</h2>
 						<p>Här finns det lite mer att läsa om Kata.</p>
 					</div>
 				</section>
 
-                <section class="gradient-bg" data-background-video="assets/blue.mp4" data-background-video-loop="true" data-background-opacity=".75">
+                <section>
 					<div>
 						<h2>KISTA</h2>
 						<p>Här finns det lite mer att läsa om kistan.</p>
 					</div>
 				</section>
 
-                <section class="gradient-bg" data-background-video="assets/mountains.mp4" data-background-video-loop="true" data-background-opacity=".75">
+                <section>
 					<div>
 						<h2>KYRKA</h2>
 						<p>Här finns det lite mer att läsa om modellen.</p>
