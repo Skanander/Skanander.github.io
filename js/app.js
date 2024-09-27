@@ -45,8 +45,8 @@ function init() {
         easing: 'easeInOut',
         duration: 300,
         color: '#FFEA82',
-        trailColor: '#EEE',
-        trailWidth: 1,
+        trailColor: 'transparent',
+        trailWidth: 0,
         svgStyle: null
     });
 
@@ -83,6 +83,8 @@ const clock = setInterval(function() {
             bar.animate(barAnimationCounter);
         }
     } else {
+        barAnimationCounter = 0;
+        bar.animate(barAnimationCounter);
         ticks = 0;
     }
 }, 300);
