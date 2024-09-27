@@ -132,7 +132,7 @@ function init() {
         bar = new ProgressBar.Circle(document.getElementById("progress"), {
             strokeWidth: 6,
             easing: 'easeInOut',
-            duration: 100,
+            duration: 50,
             color: '#FFEA82',
             trailColor: 'transparent',
             trailWidth: 0,
@@ -168,7 +168,7 @@ function init() {
                 bar.animate(barAnimationCounter);
                 ticks = 0;
             }
-        }, 200);
+        }, 100);
     } else {
         document.querySelector('#console').innerHTML = "<span style='color:black;'>Den här bildguiden är endast tillgänglig på mobila enheter.</span>";
     }
