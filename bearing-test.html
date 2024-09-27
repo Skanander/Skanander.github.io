@@ -91,12 +91,23 @@
                 color: white;
                 text-align: center;
             }
+            #progress {
+                width: 100px;
+                height: 100px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-top: -50px;
+                margin-left: -50px;
+                z-index: 9000;
+            }
 		</style>
 	</head>
 
 	<body>
         <div id="console"></div>
         <div id="btn-container"><button id="start-btn">Starta kompassen</button></div>
+        <div id="progress"></div>
 		<div class="reveal">
 
 			<div class="slides">
@@ -161,6 +172,7 @@
                 progress: false
 			});
 		</script>
+        <script src="dist/progressbar.min.js"></script>
         <script src="js/app.js"></script>
 
 	</body>

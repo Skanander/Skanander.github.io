@@ -8,6 +8,8 @@ let lastTarget = "";
 let compass = 0;
 let limit = 10;
 let ticks = 0;
+let barAnimationCounter = 0;
+let bar;
 
 let items = [
     {
@@ -38,6 +40,15 @@ let items = [
 
 function init() {
     startBtn.addEventListener("click", startCompass);
+    bar = new ProgressBar.Circle(document.getElementById("progress"), {
+        strokeWidth: 6,
+        easing: 'easeInOut',
+        duration: 3000,
+        color: '#FFEA82',
+        trailColor: '#EEE',
+        trailWidth: 1,
+        svgStyle: null
+    });
 
     if (!isIOS) {
         startBtn.parentElement.removeChild(startBtn);
@@ -63,9 +74,12 @@ function startCompass() {
 const clock = setInterval(function() {
     if (target.name != lastTarget) {
         ticks++;
+        barAnimationCounter += .1;
+        bar.animate(barAnimationCounter);
         if (ticks >= 10) {
             printItem(target);
             lastTarget = target.name;
+            barAnimationCounter = 0;
         }
     } else {
         ticks = 0;
