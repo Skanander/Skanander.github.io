@@ -83,7 +83,7 @@ function handler(e) {
 }
 
 function printItem(t) {
-    Reveal.slide
+    Reveal.slide(t.slideNum);
 }
 
 const delay = (delayInms) => {
