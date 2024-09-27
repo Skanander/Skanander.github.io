@@ -3,7 +3,7 @@ const isIOS =
     navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
     navigator.userAgent.match(/AppleWebKit/);
 
-let target;
+let target = null;
 let lastTarget = "";
 let compass = 0;
 let limit = 10;
@@ -14,11 +14,6 @@ let items = [
         name: "Stol",
         num: 120,
         color: "wheat"
-    },
-    {
-        name: "Fynd",
-        num: 150,
-        color: "lightgreen"
     },
     {
         name: "Kata",
@@ -60,7 +55,7 @@ function startCompass() {
 }
 
 const clock = setInterval(function() {
-    if (target.name != "" && target.name != lastTarget) {
+    if (target && target.name != lastTarget) {
         ticks++;
         if (ticks >= 10) {
             printItem(target);
@@ -74,7 +69,8 @@ function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
     target = getClosest(items, compass);
-    document.getElementById("console").innerHTML = " Targeting " + target.name;
+    lastTarget = target.name;
+    document.getElementById("console").innerHTML = " Targeting " + target.name + " at bearing " + compass.toString();
 }
 
 function printItem(t) {
