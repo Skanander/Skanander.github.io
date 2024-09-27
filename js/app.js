@@ -132,7 +132,7 @@ function init() {
         bar = new ProgressBar.Circle(document.getElementById("progress"), {
             strokeWidth: 6,
             easing: 'easeInOut',
-            duration: 300,
+            duration: 100,
             color: '#FFEA82',
             trailColor: 'transparent',
             trailWidth: 0,
