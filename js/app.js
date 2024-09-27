@@ -55,12 +55,13 @@ function startCompass() {
 }
 
 const clock = setInterval(function() {
-    if (target && target.name != lastTarget) {
+    if (target.name != lastTarget) {
         ticks++;
         if (ticks >= 10) {
             printItem(target);
+            lastTarget = target.name;
         }
-    } else if (target.name == lastTarget) {
+    } else {
         ticks = 0;
     }
 }, 300);
@@ -69,7 +70,9 @@ function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
     target = getClosest(items, compass);
-    lastTarget = target.name;
+    if (lastTarget == "") {
+        lastTarget = target.name;
+    }
     document.getElementById("console").innerHTML = " Targeting " + target.name + " at bearing " + compass.toString();
 }
 
