@@ -126,6 +126,11 @@ const clock = setInterval(function() {
     }
 }, 300);
 
+/*document.querySelector("#testBtn").onclick = function() {
+    let i = document.querySelector("#testInput").value;
+    printItem(items[i]);
+}*/
+
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
@@ -141,7 +146,11 @@ function printItem(t) {
     if (currentDeck == deck1) {
         document.getElementsByClassName("deck1")[0].style.display = "none";
     } else {
-        document.getElementsByClassName(currentDeck.className)[0].style.display = "none";
+        for (var i=0; i<items.length; i++) {
+            if (items[i].deckNum == currentDeck) {
+                document.getElementsByClassName(items[i].className)[0].style.display = "none";
+            }
+        }
     }
     t.deckNum.initialize();
     document.getElementsByClassName(t.className)[0].style.display = "block";
