@@ -14,25 +14,25 @@ let items = [
         name: "Stol",
         num: 120,
         color: "wheat",
-        slideNum: 1
+        slideNum: 2
     },
     {
         name: "Kata",
         num: 190,
         color: "lightyellow",
-        slideNum: 2
+        slideNum: 3
     },
     {
         name: "Kista",
         num: 250,
         color: "lightblue",
-        slideNum: 3
+        slideNum: 4
     },
     {
         name: "Kyrka",
         num: 300,
         color: "lightpink",
-        slideNum: 4
+        slideNum: 5
     }
 ];
 
