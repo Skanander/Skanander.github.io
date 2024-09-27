@@ -10,31 +10,64 @@ let limit = 10;
 let ticks = 0;
 let barAnimationCounter = 0;
 let bar;
+let currentDeck;
+let lastDeck;
+
+// Reveal decks
+
+let deck1 = new Reveal(document.querySelector('.deck1'), {
+    embedded: true,
+    keyboardCondition: 'focused',
+});
+
+let deck2 = new Reveal(document.querySelector('.deck2'), {
+    embedded: true,
+    keyboardCondition: 'focused',
+});
+
+let deck3 = new Reveal(document.querySelector('.deck3'), {
+    embedded: true,
+    keyboardCondition: 'focused',
+});
+
+let deck4 = new Reveal(document.querySelector('.deck4'), {
+    embedded: true,
+    keyboardCondition: 'focused',
+});
+
+let deck5 = new Reveal(document.querySelector('.deck5'), {
+    embedded: true,
+    keyboardCondition: 'focused',
+});
 
 let items = [
     {
         name: "Stol",
         num: 120,
         color: "wheat",
-        slideNum: 1
+        deckNum: deck2,
+        className: "deck2"
     },
     {
         name: "Kata",
         num: 190,
         color: "lightyellow",
-        slideNum: 2
+        deckNum: deck3,
+        className: "deck3"
     },
     {
         name: "Kista",
         num: 250,
         color: "lightblue",
-        slideNum: 3
+        deckNum: deck4,
+        className: "deck4"
     },
     {
         name: "Kyrka",
         num: 300,
         color: "lightpink",
-        slideNum: 4
+        deckNum: deck5,
+        className: "deck5"
     }
 ];
 
@@ -49,6 +82,10 @@ function init() {
         trailWidth: 0,
         svgStyle: null
     });
+
+    deck1.initialize();
+    document.querySelector('.deck1').style.display = "block";
+    currentDeck = deck1;
 
     if (!isIOS) {
         startBtn.parentElement.removeChild(startBtn);
@@ -100,7 +137,13 @@ function handler(e) {
 }
 
 function printItem(t) {
-    Reveal.slide(t.slideNum);
+    currentDeck.destroy();
+    if (currentDeck == deck1) {
+        document.getElementsByClassName("deck1")[0].style.display = "none";
+    }
+    t.deckNum.initialize();
+    document.getElementsByClassName(t.className)[0].style.display = "block";
+    currentDeck = t.deckNum;
 }
 
 const delay = (delayInms) => {
