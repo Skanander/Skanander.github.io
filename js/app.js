@@ -127,28 +127,50 @@ let items = [
 ];
 
 function init() {
-    startBtn.addEventListener("click", startCompass);
-    bar = new ProgressBar.Circle(document.getElementById("progress"), {
-        strokeWidth: 6,
-        easing: 'easeInOut',
-        duration: 300,
-        color: '#FFEA82',
-        trailColor: 'transparent',
-        trailWidth: 0,
-        svgStyle: null
-    });
+    if (isMobile()) {
+        startBtn.addEventListener("click", startCompass);
+        bar = new ProgressBar.Circle(document.getElementById("progress"), {
+            strokeWidth: 6,
+            easing: 'easeInOut',
+            duration: 300,
+            color: '#FFEA82',
+            trailColor: 'transparent',
+            trailWidth: 0,
+            svgStyle: null
+        });
 
-    deck1.initialize();
-    deck2.initialize();
-    deck3.initialize();
-    deck4.initialize();
-    deck5.initialize();
-    document.querySelector('.deck1').style.display = "block";
-    currentDeck = deck1;
+        deck1.initialize();
+        deck2.initialize();
+        deck3.initialize();
+        deck4.initialize();
+        deck5.initialize();
+        document.querySelector('.deck1').style.display = "block";
+        currentDeck = deck1;
 
-    if (!isIOS) {
-        startBtn.parentElement.removeChild(startBtn);
-        window.addEventListener("deviceorientationabsolute", handler, true);
+        if (!isIOS) {
+            startBtn.parentElement.removeChild(startBtn);
+            window.addEventListener("deviceorientationabsolute", handler, true);
+        }
+
+        const clock = setInterval(function() {
+            if (target.name != lastTarget) {
+                ticks++;
+                barAnimationCounter += .1;
+                bar.animate(barAnimationCounter);
+                if (ticks >= 10) {
+                    printItem(target);
+                    lastTarget = target.name;
+                    barAnimationCounter = 0;
+                    bar.animate(barAnimationCounter);
+                }
+            } else {
+                barAnimationCounter = 0;
+                bar.animate(barAnimationCounter);
+                ticks = 0;
+            }
+        }, 300);
+    } else {
+        document.querySelector('#console').innerHTML = "<span style='color:black;'>Den här bildguiden är endast tillgänglig på mobila enheter.</span>";
     }
 }
 
@@ -166,24 +188,6 @@ function startCompass() {
         .catch(() => alert("not supported"));
     }
 }
-
-const clock = setInterval(function() {
-    if (target.name != lastTarget) {
-        ticks++;
-        barAnimationCounter += .1;
-        bar.animate(barAnimationCounter);
-        if (ticks >= 10) {
-            printItem(target);
-            lastTarget = target.name;
-            barAnimationCounter = 0;
-            bar.animate(barAnimationCounter);
-        }
-    } else {
-        barAnimationCounter = 0;
-        bar.animate(barAnimationCounter);
-        ticks = 0;
-    }
-}, 300);
 
 /*document.querySelector("#testBtn").onclick = function() {
     let i = document.querySelector("#testInput").value;
@@ -222,5 +226,10 @@ const getClosest = (data, target) =>
     data.reduce((acc, obj) =>
        Math.abs(target - obj.num) < Math.abs(target - acc.num) ? obj : acc
     );
+
+function isMobile() {
+    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    return regex.test(navigator.userAgent);
+}
 
 init();
