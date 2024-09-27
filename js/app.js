@@ -97,7 +97,7 @@ let deck5 = new Reveal(document.querySelector('.deck5'), {
 
 let items = [
     {
-        name: "Stol",
+        name: "Suntakstolen",
         num: 120,
         color: "wheat",
         deckNum: deck2,
@@ -118,7 +118,7 @@ let items = [
         className: "deck4"
     },
     {
-        name: "Kyrka",
+        name: "Modell av kyrka",
         num: 300,
         color: "lightpink",
         deckNum: deck5,
@@ -132,7 +132,7 @@ function init() {
         bar = new ProgressBar.Circle(document.getElementById("progress"), {
             strokeWidth: 6,
             easing: 'easeInOut',
-            duration: 50,
+            duration: 100,
             color: '#FFEA82',
             trailColor: 'transparent',
             trailWidth: 0,
@@ -168,7 +168,7 @@ function init() {
                 bar.animate(barAnimationCounter);
                 ticks = 0;
             }
-        }, 100);
+        }, 200);
     } else {
         document.querySelector('#console').innerHTML = "<span style='color:black;'>Den här bildguiden är endast tillgänglig på mobila enheter.</span>";
     }
@@ -189,11 +189,6 @@ function startCompass() {
     }
 }
 
-/*document.querySelector("#testBtn").onclick = function() {
-    let i = document.querySelector("#testInput").value;
-    printItem(items[i]);
-}*/
-
 function handler(e) {
     compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
     compass = Math.trunc(compass);
@@ -201,7 +196,7 @@ function handler(e) {
     if (lastTarget == "") {
         lastTarget = target.name;
     }
-    document.getElementById("console").innerHTML = " Targeting " + target.name + " at bearing " + compass.toString();
+    document.getElementById("console").innerHTML = "Föremål: " + target.name + " vid " + compass.toString();
 }
 
 function printItem(t) {
