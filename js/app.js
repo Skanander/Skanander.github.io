@@ -140,6 +140,8 @@ function printItem(t) {
     currentDeck.destroy();
     if (currentDeck == deck1) {
         document.getElementsByClassName("deck1")[0].style.display = "none";
+    } else {
+        document.getElementsByClassName(currentDeck.className)[0].style.display = "none";
     }
     t.deckNum.initialize();
     document.getElementsByClassName(t.className)[0].style.display = "block";
