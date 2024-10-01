@@ -17,6 +17,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     html5QrCode.stop().then((ignore) => {
         // Stopped
         cameraOn = false;
+        document.querySelector("#reader-btn").innerHTML = qrIcon;
     }).catch((err) => {
         // Stop failed, handle it.
     });
@@ -27,7 +28,7 @@ const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 document.querySelector("#reader-btn").onclick = function() {
     if (!cameraOn) {
         cameraOn = true;
-        this.innerHTML = xIcon;
+        document.querySelector("#reader-btn").innerHTML = xIcon;
         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     } else {
         html5QrCode.stop().then((ignore) => {
