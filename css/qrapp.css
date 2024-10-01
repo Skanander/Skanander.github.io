@@ -93,8 +93,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 #reader-btn-container {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 20px;
+    left: 20px;
     z-index: 9000;
     transition: .5s ease-in-out;
 }
