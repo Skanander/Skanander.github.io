@@ -10,6 +10,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         }
     }
     html5QrCode.stop().then((ignore) => {
+        // Stopped
       }).catch((err) => {
         // Stop failed, handle it.
       });

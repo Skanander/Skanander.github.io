@@ -34,8 +34,12 @@ section.has-light-background, section.has-light-background h1, section.has-light
     max-height: 100%;
     max-width: 100%;
 }
-.reveal .slides > section {
+.reveal .slides > section:not(:has(section)) {
     padding: 20px 40px 80px 40px;
+}
+.reveal .slides > section > section {
+    padding: 20px 40px 80px 40px;
+    bottom: 0;
 }
 .reveal ul {
     display: block;
@@ -63,16 +67,19 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 #reader-btn-container {
     position: fixed;
-    top: 10;
-    left: 10;
-    width: 30px;
-    height: 30px;
+    top: 10px;
+    left: 10px;
     z-index: 9000;
 }
 
 #reader-btn {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
+    border: 0;
+    background: #f7f7f7;
+    padding: 16px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #testBtn {
