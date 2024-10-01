@@ -29,6 +29,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         // Stopped
         cameraOn = false;
         readerBtn.innerHTML = qrIcon;
+        readerBtn.parentElement.classList.remove("move-to-center");
     }).catch((err) => {
         // Stop failed, handle it.
     });
