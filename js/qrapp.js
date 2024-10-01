@@ -13,6 +13,8 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     for (let i=0; i<slideLayout.length; i++) {
         if (slideLayout[i] == decodedText) {
             Reveal.slide(i);
+        } else {
+            notifier.show('Fel!', 'Koden kunde inte matchas till något föremål i guiden.', '', 'assets/error.png', 0);
         }
     }
     html5QrCode.stop().then((ignore) => {
