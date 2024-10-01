@@ -10,61 +10,87 @@
     --r-main-color: #f7f7f7;
     --r-heading-color: #f7f7f7;
 }
+
 * {
     box-sizing: border-box;
 }
+
 body {
     font-size: 1rem;
     hyphens: auto;
     margin: 0;
 }
+
 h1, h2, h3, h4, h5, h6, p {
     text-align: left;
 }
+
 section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
     color: #3a3a3a;
 }
+
 .reveal p {
     line-height: 1.35;
 }
+
 .slides {
+    /*
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     max-height: 100%;
     max-width: 100%;
+    */
 }
+
 .reveal .slides > section:not(:has(section)) {
     padding: 20px 40px 80px 40px;
+    bottom: 50px;
 }
+
 .reveal .slides > section > section {
     padding: 20px 40px 80px 40px;
-    bottom: 0;
+    bottom: 50px;
 }
+
 .reveal ul {
     display: block;
 }
+
 .reveal .slides > .gradient-bg {
     background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.85) 70%);
 }
+
 .reveal .slides > section p {
     margin: 0;
     text-indent: 2.5rem;
 }
+
+
 .reveal .slides > section p:first-of-type {
     text-indent: 0;
 }
+
 @media only screen and (min-width: 1024px) {
     :root {
         --r-main-font-size: 150%;
         --r-heading2-size: 2.5rem;
     }
     
-    .reveal .slides > section {
+    .reveal .slides > section:not(:has(section)) {
         padding: 80px 40% 80px 100px;
     }
+
+    .reveal .slides > section > section {
+        padding: 80px 40% 80px 100px;
+    }
+
+    #reader-btn-container {
+        display: none;
+    }
 }
+
 #reader-btn-container {
     position: fixed;
     top: 10px;
@@ -73,18 +99,16 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 
 #reader-btn {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     border: 0;
     background: #f7f7f7;
-    padding: 16px;
+    padding: 0;
+    line-height: 0;
     border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-#testBtn {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 9000;
+#reader video {
+    height: 100svh;
 }
