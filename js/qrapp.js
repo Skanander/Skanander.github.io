@@ -10,12 +10,20 @@ const xIcon  = `<img src="assets/close.png" width="24" height="24" />`;
 
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     console.log(decodedText);
+    let hits = 0;
+    let page = 0;
     for (let i=0; i<slideLayout.length; i++) {
         if (slideLayout[i] == decodedText) {
-            Reveal.slide(i);
-        } else {
-            notifier.show('Fel!', 'Koden kunde inte matchas till något föremål i guiden.', '', 'assets/error.png', 0);
+            hits++;
+            page = i;
         }
+    }
+    if (hits === 0) {
+        notifier.show('Fel!', 'Koden kunde inte matchas till något föremål i guiden.', 'danger', 'assets/error.png', 5000);
+    } else if (hits > 1) {
+        notifier.show('Fel!', 'Koden kunde matchas till fler än ett föremål i guiden.', 'danger', 'assets/error.png', 5000);
+    } else {
+        Reveal.slide(page);
     }
     html5QrCode.stop().then((ignore) => {
         // Stopped

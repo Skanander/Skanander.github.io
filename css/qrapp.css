@@ -85,7 +85,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
     .reveal .slides > section > section {
         padding: 80px 40% 80px 100px;
     }
-
+    
     #reader-btn-container {
         display: none;
     }
