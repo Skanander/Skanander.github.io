@@ -138,13 +138,12 @@ function init() {
             trailWidth: 0,
             svgStyle: null
         });
-
         deck1.initialize();
+        document.querySelector('.deck1').style.display = "block";
         deck2.initialize();
         deck3.initialize();
         deck4.initialize();
         deck5.initialize();
-        document.querySelector('.deck1').style.display = "block";
         currentDeck = deck1;
 
         if (!isIOS) {
