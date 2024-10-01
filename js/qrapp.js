@@ -4,6 +4,7 @@ const html5QrCode = new Html5Qrcode("reader");
 
 let cameraOn = false;
 
+const readerBtn = document.querySelector("#reader-btn");
 const qrIcon = `<img src="assets/qr.png" width="24" height="24" />`;
 const xIcon  = `<img src="assets/close.png" width="24" height="24" />`;
 
@@ -17,7 +18,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     html5QrCode.stop().then((ignore) => {
         // Stopped
         cameraOn = false;
-        document.querySelector("#reader-btn").innerHTML = qrIcon;
+        readerBtn.innerHTML = qrIcon;
     }).catch((err) => {
         // Stop failed, handle it.
     });
@@ -25,16 +26,18 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
 
 const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 
-document.querySelector("#reader-btn").onclick = function() {
+readerBtn.onclick = function() {
     if (!cameraOn) {
         cameraOn = true;
-        document.querySelector("#reader-btn").innerHTML = xIcon;
+        readerBtn.innerHTML = xIcon;
+        readerBtn.parentElement.classList.add("move-to-center");
         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     } else {
         html5QrCode.stop().then((ignore) => {
             // Stopped
             cameraOn = false;
-            document.querySelector("#reader-btn").innerHTML = qrIcon;
+            readerBtn.parentElement.classList.remove("move-to-center");
+            readerBtn.innerHTML = qrIcon;
         }).catch((err) => {
             // Stop failed, handle it.
         });
