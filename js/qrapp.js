@@ -34,7 +34,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     });
 };
 
-const config = { fps: 60, qrbox: { width: 250, height: 250 } };
+const config = { fps: 30, qrbox: { width: 250, height: 250 } };
 
 readerBtn.onclick = function() {
     if (!html5QrCode.isScanning) {
