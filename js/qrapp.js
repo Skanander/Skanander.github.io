@@ -43,7 +43,7 @@ readerBtn.onclick = function() {
         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
         .catch((err) => {
             if (err.search("NotAllowedError")) {
-                notifier.show('Fel!', 'QR-läsaren behöver tillåtelse att använda kameran. Om du vill använda QR-läsaren behöver du ta bort blockeringen av kameran i din webbläsare och prova igen.', 'danger', 'assets/error.png', 8000);
+                notifier.show('Fel!', 'QR-läsaren behöver tillåtelse att använda kameran. Om du vill använda QR-läsaren behöver du ge behörighet till sidan att använda kameran och prova igen.', 'danger', 'assets/error.png', 8000);
                 readerBtn.innerHTML = qrIcon;
                 readerBtn.parentElement.classList.remove("move-to-center");
                 document.removeEventListener('click', disableMouseClick, true);
