@@ -2,8 +2,6 @@ const slideLayout = ["intro", "stol", "kata"];
 
 const html5QrCode = new Html5Qrcode("reader");
 
-let cameraOn = false;
-
 const readerBtn = document.querySelector("#reader-btn");
 const qrIcon = `<img src="assets/qr.png" width="24" height="24" />`;
 const xIcon  = `<img src="assets/close.png" width="24" height="24" />`;
@@ -27,30 +25,39 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     }
     html5QrCode.stop().then((ignore) => {
         // Stopped
-        cameraOn = false;
         readerBtn.innerHTML = qrIcon;
         readerBtn.parentElement.classList.remove("move-to-center");
     }).catch((err) => {
         // Stop failed, handle it.
+        console.log(err);
     });
 };
 
 const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 
 readerBtn.onclick = function() {
-    if (!cameraOn) {
-        cameraOn = true;
+    if (!html5QrCode.isScanning) {
+        document.addEventListener('click', disableMouseClick, true);
         readerBtn.innerHTML = xIcon;
         readerBtn.parentElement.classList.add("move-to-center");
         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
     } else {
         html5QrCode.stop().then((ignore) => {
             // Stopped
-            cameraOn = false;
-            readerBtn.parentElement.classList.remove("move-to-center");
             readerBtn.innerHTML = qrIcon;
+            readerBtn.parentElement.classList.remove("move-to-center");
+            html5QrCode.clear();
+            document.removeEventListener('click', disableMouseClick, true);
         }).catch((err) => {
             // Stop failed, handle it.
+            console.log(err);
         });
+    }
+}
+
+function disableMouseClick(event) {
+    if (!html5QrCode.isScanning) {
+        event.stopPropagation();
+        event.preventDefault();
     }
 }
