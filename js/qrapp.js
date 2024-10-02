@@ -27,6 +27,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         // Stopped
         readerBtn.innerHTML = qrIcon;
         readerBtn.parentElement.classList.remove("move-to-center");
+        document.removeEventListener('click', disableMouseClick, true);
     }).catch((err) => {
         // Stop failed, handle it.
         console.log(err);
