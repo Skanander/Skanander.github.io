@@ -40,7 +40,15 @@ readerBtn.onclick = function() {
         document.addEventListener('click', disableMouseClick, true);
         readerBtn.innerHTML = xIcon;
         readerBtn.parentElement.classList.add("move-to-center");
-        html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+        html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
+        .catch((err) => {
+            if (err.search("NotAllowedError")) {
+                notifier.show('Fel!', 'QR-läsaren behöver tillåtelse att använda kameran. Om du vill använda QR-läsaren behöver du ta bort blockeringen av kameran i din webbläsare och prova igen.', 'danger', 'assets/error.png', 8000);
+                readerBtn.innerHTML = qrIcon;
+                readerBtn.parentElement.classList.remove("move-to-center");
+                document.removeEventListener('click', disableMouseClick, true);
+            }
+        });
     } else {
         html5QrCode.stop().then((ignore) => {
             // Stopped
