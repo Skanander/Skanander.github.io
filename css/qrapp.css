@@ -1,7 +1,81 @@
+/* hanken-grotesk-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-700 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-700italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: italic;
+    font-weight: 700;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/gelasio-v12-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/gelasio-v12-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-600 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/gelasio-v12-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-600italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: italic;
+    font-weight: 600;
+    src: url('../assets/fonts/gelasio-v12-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+  
+  
+
 :root {
     --r-main-font-size: 112.5%;
-    --r-main-font: Georgia, 'Times New Roman', Times, serif;
-    --r-heading-font: Verdana, sans-serif;
+    --r-main-font: 'Gelasio', Georgia, serif;
+    --r-heading-font: 'Hanken Grotesk', sans-serif;
     --r-heading-font-weight: 700;
     --r-font-weight: 400;
     --r-heading2-size: 1.75rem;
@@ -9,6 +83,9 @@
     --r-link-color: #df2020;
     --r-main-color: #f7f7f7;
     --r-heading-color: #f7f7f7;
+    --r-heading-letter-spacing: .05rem;
+    --r-heading-line-height: 1.4;
+    --r-background-color: #011936;
 }
 
 * {
@@ -47,20 +124,24 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 
 .reveal .slides > section:not(:has(section)) {
-    padding: 20px 40px 80px 40px;
-    bottom: 50px;
+    padding: 20px 40px 120px 40px;
+    bottom: 0;
 }
 
 .reveal .slides > section > section {
-    padding: 20px 40px 80px 40px;
-    bottom: 50px;
+    padding: 20px 40px 120px 40px;
+    bottom: 0;
 }
 
 .reveal ul {
     display: block;
 }
 
-.reveal .slides > .gradient-bg {
+.backgrounds .slide-background.present.gradient-bg .slide-background-content::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100svh;
     background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.85) 70%);
 }
@@ -96,7 +177,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 #reader-btn-container {
     position: absolute;
-    bottom: 20px;
+    bottom: 36px;
     left: 20px;
     z-index: 9000;
     transition: .5s ease-in-out;
