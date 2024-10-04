@@ -3,8 +3,8 @@ const slideLayout = ["intro", "stol", "kata"];
 const html5QrCode = new Html5Qrcode("reader");
 
 const readerBtn = document.querySelector("#reader-btn");
-const qrIcon = `<img src="assets/qr.png" width="24" height="24" />`;
-const xIcon  = `<img src="assets/close.png" width="24" height="24" />`;
+const qrIcon = `<img src="assets/qr.png" width="24" height="24" alt="QR-kod" />`;
+const xIcon  = `<img src="assets/close.png" width="24" height="24" alt="Stäng" />`;
 
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     console.log(decodedText);
@@ -40,12 +40,14 @@ readerBtn.onclick = function() {
     if (!html5QrCode.isScanning) {
         document.addEventListener('click', disableMouseClick, true);
         readerBtn.innerHTML = xIcon;
+        readerBtn.parentElement.ariaLabel = "Stäng QR-läsaren";
         readerBtn.parentElement.classList.add("move-to-center");
         html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback)
         .catch((err) => {
             if (err.search("NotAllowedError")) {
                 notifier.show('Fel!', 'QR-läsaren behöver tillåtelse att använda kameran. Om du vill använda QR-läsaren behöver du ge behörighet till sidan att använda kameran och prova igen.', 'danger', 'assets/error.png', 8000);
                 readerBtn.innerHTML = qrIcon;
+                readerBtn.parentElement.ariaLabel = "Starta QR-läsaren";
                 readerBtn.parentElement.classList.remove("move-to-center");
                 document.removeEventListener('click', disableMouseClick, true);
             }
@@ -54,6 +56,7 @@ readerBtn.onclick = function() {
         html5QrCode.stop().then((ignore) => {
             // Stopped
             readerBtn.innerHTML = qrIcon;
+            readerBtn.parentElement.ariaLabel = "Starta QR-läsaren";
             readerBtn.parentElement.classList.remove("move-to-center");
             html5QrCode.clear();
             document.removeEventListener('click', disableMouseClick, true);
