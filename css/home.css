@@ -127,6 +127,19 @@ h2 {
     font-size: 1.75rem;
 }
 
+figure {
+    text-align: center;
+}
+
+figure img {
+    border-radius: 5px;
+}
+
+figcaption {
+    font-size: 90%;
+    font-style: italic;
+}
+
 .tagline {
     font-family: var(--body-heading-font);
     margin: 0;
