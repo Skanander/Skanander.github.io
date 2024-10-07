@@ -1,3 +1,76 @@
+/* hanken-grotesk-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-700 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* hanken-grotesk-700italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Hanken Grotesk';
+    font-style: italic;
+    font-weight: 700;
+    src: url('../assets/fonts/hanken-grotesk-v8-latin-700italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/gelasio-v12-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../assets/fonts/gelasio-v12-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-600 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/gelasio-v12-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* gelasio-600italic - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Gelasio';
+    font-style: italic;
+    font-weight: 600;
+    src: url('../assets/fonts/gelasio-v12-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+  
+
 :root {
     --body-main-font-size: 112.5%;
     --body-main-font: 'Gelasio', Georgia, serif;
@@ -20,7 +93,7 @@
 
 body {
     margin: 0;
-    height: 100svh;
+    min-height: 100svh;
     background: var(--body-background-color);
     color: var(--body-main-color);
     font-family: var(--body-main-font);
@@ -46,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     line-height: 1.15;
 }
 
@@ -67,7 +140,7 @@ h2 {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 4rem;
+    margin-top: 1.5rem;
 }
 
 .wrapper {
@@ -120,9 +193,15 @@ h2 {
     padding: .75rem 20px;
 }
 
+.content p {
+    text-indent: 0;
+    margin-bottom: 1rem;
+}
+
 .content h2 {
     text-align: center;
     font-size: 1.5rem;
+    text-transform: none;
 }
 
 .content button {
@@ -141,4 +220,21 @@ h2 {
     padding: .75rem 20px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     position: relative;
+}
+
+.info {
+    width: 1rem;
+    height: 1rem;
+}
+
+.content div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content div p {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
