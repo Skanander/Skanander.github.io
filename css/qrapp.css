@@ -161,7 +161,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 }
 
 .stack-intro h1 {
-    /*writing-mode: sideways-lr;*/
+    line-height: 1;
+    writing-mode: sideways-lr;
 }
 
 @media only screen and (min-width: 1024px) {
