@@ -22,7 +22,8 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         notifier.show('Fel!', 'Koden kunde matchas till fler än ett föremål i guiden.', 'danger', 'assets/error.png', 5000);
     } else {
         Reveal.slide(page);
-        notifier.show('Kod läst', 'Avsnitt: ' + decodedText, 'success', 'assets/check.png', 3000);
+        let msg = decodedText.charAt(0).toUpperCase() + decodedText.slice(1); //Capitalize first letter in case QR-code was written poorly
+        notifier.show('Kod läst', 'Avsnitt: ' + msg, 'success', 'assets/check.png', 3000);
     }
     html5QrCode.stop().then((ignore) => {
         // Stopped
