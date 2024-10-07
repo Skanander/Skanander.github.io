@@ -1,4 +1,4 @@
-const slideLayout = ["intro", "stol", "kata"];
+const slideLayout = ["Intro", "Suntakstolen", "Kata"];
 
 const html5QrCode = new Html5Qrcode("reader");
 
@@ -11,7 +11,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     let hits = 0;
     let page = 0;
     for (let i=0; i<slideLayout.length; i++) {
-        if (slideLayout[i] == decodedText) {
+        if (slideLayout[i].toLowerCase() === decodedText.toLowerCase()) {
             hits++;
             page = i;
         }
@@ -22,6 +22,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         notifier.show('Fel!', 'Koden kunde matchas till fler än ett föremål i guiden.', 'danger', 'assets/error.png', 5000);
     } else {
         Reveal.slide(page);
+        notifier.show('Kod läst', 'Avsnitt: ' + decodedText, 'success', 'assets/check.png', 3000);
     }
     html5QrCode.stop().then((ignore) => {
         // Stopped
