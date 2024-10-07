@@ -156,13 +156,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
     text-indent: 0;
 }
 
-.stack-intro {
-    height: calc(50% + 20px);
+.reveal .slides > section > .stack-intro {
+    height: 100%;
+    padding: 20px;
 }
 
 .stack-intro h1 {
-    text-align: center;
-    letter-spacing: .25rem;
+    writing-mode: sideways-lr;
 }
 
 @media only screen and (min-width: 1024px) {
