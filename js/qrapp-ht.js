@@ -11,9 +11,9 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     let hits = 0;
     let page = 0;
     for (let i=0; i<slideLayout.length; i++) {
-        if (slideLayout[i + 1].toLowerCase() === decodedText.toLowerCase()) {
+        if (slideLayout[i].toLowerCase() === decodedText.toLowerCase()) {
             hits++;
-            page = i + 1;
+            page = i;
             console.log(decodedText);
         }
     }
