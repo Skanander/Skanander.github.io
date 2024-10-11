@@ -1,5 +1,4 @@
-const slideLayout = ["Intro", "Tutorial", "Bronssköld", "Bronssköld", "Stenyxa", "Stenyxa", "Kleopatra", "Kleopatra"];
-const answerLayout = ["", "", "", ""]
+const slideLayout = ["Intro", "Tutorial", "Q_Bronssköld", "Bronssköld", "Q_Stenyxa", "Stenyxa", "Q_Kleopatra", "Kleopatra"];
 
 const html5QrCode = new Html5Qrcode("reader");
 
@@ -15,6 +14,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         if (slideLayout[i + 1].toLowerCase() === decodedText.toLowerCase()) {
             hits++;
             page = i + 1;
+            console.log(decodedText);
         }
     }
     if (hits === 0) {
