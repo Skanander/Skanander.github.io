@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Gåtor på Västergötlands museum">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Gåtor - Västergötlands museum</title>
+        <link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+        <link rel="stylesheet" href="dist/css/notifier.css">
+        <link rel="stylesheet" href="css/qrapp-ht.css">
+    </head>
+    <body>
+
+        <!-- QR-READER -->
+        <div id="reader-btn-container">
+            <button id="reader-btn" aria-label="Starta QR-läsaren"><img src="assets/qr.png" width="24" height="24" alt="QR-kod" /></button>
+        </div>
+        <div id="reader" width="250px"></div>
+
+        <!-- REVEALJS -->
+
+        <div class="reveal">
+
+            <section class="slides">
+
+                <!-- INTRO -->
+                <section>
+                    <h2>Hjälp!</h2>
+                    <p>Allt är knas! Snälla, du måste hjälpa mig.</p>
+                    <p>Jag är överkuckelimuck för museets databas och någonting gick precis väldigt fel. Våra föremål har hamnat huller om buller.</p>
+                    <p>Snälla, det finns QR-koder vid några föremål. Jag kan visa en beskrivning för dig men du måste knäcka gåtan och koppla den till rätt föremål genom att scanna dess kod. Förstår du?</p>
+                    <button class="next">Ja</button>
+                </section>
+
+                <section>
+                    <h2>Tack!</h2>
+                    <p>QR-koderna ser ut så här:</p>
+                    <img src="assets/qr-example.png" width="100" height="100" alt="Exempel på QR-kod i spelet" />
+                    <p>De finns i alla museets utställningar. Lite här och där. Tryck på knappen i nedre vänstra hörnet för att starta scannern.</p>
+                    <p>Okej, det här kan funka... Är du redo för första gåtan?</p>
+                    <button class="next">Ja!</button>
+                </section>
+
+                <section>
+                    <h2>#DATA_SAKNAS</h2>
+                    <p>Rund och stark, gjord i skimrande brun metall. I strid skyddade den från fiendens hugg.</p>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>BRONSSKÖLD</h2>
+                    <p>Rund och stark, gjord i skimrande brun metall. I strid skyddade den från fiendens hugg.</p>
+                    <button class="next">Nästa föremål</button>
+                </section>
+
+                <section>
+                    <h2>#DATA_SAKNAS</h2>
+                    <p>Ett verktyg från urtiden, min kant är vass och mitt blad av sten.</p>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>STENYXA</h2>
+                    <p>Ett verktyg från urtiden, min kant är vass och mitt blad av sten.</p>
+                    <button class="next">Nästa föremål</button>
+                </section>
+
+                <section>
+                    <h2>#DATA_SAKNAS</h2>
+                    <p>En mäktig drottning i ett land av sand och pyramider, mitt namn har levt genom historien.</p>
+                </section>
+
+                <section data-auto-animate>
+                    <h2>KLEOPATRA</h2>
+                    <p>En mäktig drottning i ett land av sand och pyramider, mitt namn har levt genom historien.</p>
+                    <button class="next">Nästa föremål</button>
+                </section>
+            
+            <!-- /slides -->
+            </section>
+
+        </div>
+
+        <!-- /REVEALJS -->
+        <script src="dist/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				scrollActivationWidth: null,
+				width: 600,
+				height: 960,
+				margin: 0,
+				center: false,
+				minScale: 1,
+				maxScale: 1,
+				disableLayout: true,
+                controls: false,
+                touch: false,
+                keyboard: false,
+			});
+		</script>
+        <script src="dist/html5-qrcode.min.js"></script>
+        <script src="dist/notifier.js"></script>
+        <script src="js/qrapp-ht.js"></script>
+    </body>
+</html>

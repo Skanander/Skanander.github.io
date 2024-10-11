@@ -1,0 +1,157 @@
+:root {
+    --r-main-font-size: 112.5%;
+    --r-main-font: 'Consolas', monospace;
+    --r-heading-font: 'Consolas', monospace;
+    --r-heading-font-weight: 700;
+    --r-font-weight: 400;
+    --r-heading2-size: 1.75rem;
+    --r-selection-background-color: rgba(211, 24, 24, 0.75);
+    --r-link-color: #df2020;
+    --r-main-color: #f7f7f7;
+    --r-heading-color: #f7f7f7;
+    --r-heading-letter-spacing: .05rem;
+    --r-heading-line-height: 1.4;
+    --r-background-color: #011936;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1rem;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    text-align: left;
+}
+
+section.has-light-background, section.has-light-background h1, section.has-light-background h2, section.has-light-background h3, section.has-light-background h4, section.has-light-background h5, section.has-light-background h6 {
+    color: #3a3a3a;
+}
+
+.reveal p {
+    line-height: 1.35;
+}
+
+.slides {
+    /*
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-height: 100%;
+    max-width: 100%;
+    */
+}
+
+.reveal .slides > section {
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.95);
+}
+
+.reveal .slides > section:not(:has(section)) {
+    padding: 20px 40px 120px 40px;
+    bottom: 0;
+}
+
+.reveal .slides > section > section {
+    padding: 20px 40px 120px 40px;
+    bottom: 0;
+}
+
+.reveal ul {
+    display: block;
+}
+
+.backgrounds .slide-background.present.gradient-bg .slide-background-content::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100svh;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.85) 70%);
+}
+
+.reveal .slides > section p {
+    margin: 0;
+    text-indent: 2.5rem;
+}
+
+
+.reveal .slides > section p:first-of-type {
+    text-indent: 0;
+}
+
+.reveal .slides > section > .stack-intro {
+    padding: 20px 20px 120px;
+}
+
+.stack-intro h1 {
+    line-height: 1;
+    writing-mode: vertical-lr;
+}
+
+@media only screen and (min-width: 1024px) {
+    :root {
+        --r-main-font-size: 150%;
+        --r-heading2-size: 2.5rem;
+    }
+    
+    .reveal .slides > section:not(:has(section)) {
+        padding: 80px 40% 80px 100px;
+    }
+
+    .reveal .slides > section > section {
+        padding: 80px 40% 80px 100px;
+    }
+    
+    #reader-btn-container {
+        display: none;
+    }
+}
+
+#reader-btn-container {
+    position: absolute;
+    bottom: 36px;
+    left: 20px;
+    z-index: 9000;
+    transition: .5s ease-in-out;
+}
+
+.move-to-center {
+    left: 50% !important;
+    margin-left: -24px;
+}
+
+button {
+    border: 0;
+    background: #f7f7f7;
+    padding: 20px;
+    line-height: 0;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-size: inherit;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    z-index: 9000;
+    cursor: pointer;
+}
+
+#reader-btn {
+    width: 48px;
+    height: 48px;
+    border: 0;
+    background: #f7f7f7;
+    padding: 0;
+    line-height: 0;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#reader video {
+    height: 100svh;
+}
+
+.reveal pre {
+    white-space: pre-wrap;
+    font-size: .85rem;
+}
