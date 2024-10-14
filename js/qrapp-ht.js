@@ -14,7 +14,6 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         if (slideLayout[i].toLowerCase() === decodedText.toLowerCase()) {
             hits++;
             page = i;
-            console.log(decodedText);
         }
     }
     if (hits === 0) {
@@ -22,9 +21,16 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     } else if (hits > 1) {
         notifier.show('Fel!', 'Koden kunde matchas till fler än ett föremål i appen.', 'danger', 'assets/error.png', 5000);
     } else {
-        Reveal.slide(page);
-        let msg = decodedText.charAt(0).toUpperCase() + decodedText.slice(1); //Capitalize first letter in case QR-code was written poorly
-        notifier.show('Kod läst', 'Svar: ' + msg, 'success', 'assets/check.png', 3000);
+        let currentSlide = Reveal.getCurrentSlide();
+        for (let i=0; i<slideLayout.length; i++) {
+            if (slideLayout[currentSlide] + 1 === decodedText) {
+                Reveal.slide(page);
+                let msg = decodedText.charAt(0).toUpperCase() + decodedText.slice(1); //Capitalize first letter in case QR-code was written poorly
+                notifier.show('Kod läst', 'Svar: ' + msg, 'success', 'assets/check.png', 3000);
+            } else {
+                notifier.show('Kod läst', 'Beskrivningen passar inte föremålet!' + msg, 'danger', 'assets/error.png', 3000);
+            }
+        }
     }
     html5QrCode.stop().then((ignore) => {
         // Stopped
