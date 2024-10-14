@@ -22,8 +22,9 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         notifier.show('Fel!', 'Koden kunde matchas till fler än ett föremål i appen.', 'danger', 'assets/error.png', 5000);
     } else {
         let currentSlide = Reveal.getCurrentSlide();
+        let isAnswer = currentSlide + 1;
         for (let i=0; i<slideLayout.length; i++) {
-            if (slideLayout[currentSlide] + 1 === decodedText) {
+            if (slideLayout[isAnswer].toLowerCase() === decodedText.toLowerCase()) {
                 Reveal.slide(page);
                 let msg = decodedText.charAt(0).toUpperCase() + decodedText.slice(1); //Capitalize first letter in case QR-code was written poorly
                 notifier.show('Kod läst', 'Svar: ' + msg, 'success', 'assets/check.png', 3000);
