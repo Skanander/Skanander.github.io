@@ -23,14 +23,20 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     } else {
         let currentSlide = Reveal.getIndices();
         let isAnswer = currentSlide.h + 1;
+        let check = false;
         for (let i=0; i<slideLayout.length; i++) {
             if (slideLayout[i].toLowerCase() === decodedText.toLowerCase() && i === isAnswer) {
-                Reveal.slide(page);
-                let msg = decodedText.charAt(0).toUpperCase() + decodedText.slice(1); //Capitalize first letter in case QR-code was written poorly
-                notifier.show('Kod läst', 'Svar: ' + msg, 'success', 'assets/check.png', 3000);
+                check = true;
             } else {
-                notifier.show('Kod läst', 'Beskrivningen passar inte föremålet!' + msg, 'danger', 'assets/error.png', 3000);
+                check = false;
             }
+        }
+        if (check) {
+            Reveal.slide(page);
+            let msg = decodedText.charAt(0).toUpperCase() + decodedText.slice(1); //Capitalize first letter in case QR-code was written poorly
+            notifier.show('Kod läst', 'Svar: ' + msg, 'success', 'assets/check.png', 3000);
+        } else {
+            notifier.show('Kod läst', 'Beskrivningen passar inte föremålet!', 'danger', 'assets/error.png', 3000);
         }
     }
     html5QrCode.stop().then((ignore) => {
