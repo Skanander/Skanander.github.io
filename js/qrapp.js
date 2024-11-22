@@ -1,5 +1,3 @@
-const slideLayout = ["Intro", "Suntakstolen", "Kata"];
-
 const html5QrCode = new Html5Qrcode("reader");
 
 const readerBtn = document.querySelector("#reader-btn");

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Din digitala guidebok till Västergötlands museum">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>QR-Guide - Skara i medeltid</title>
+        <link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+        <link rel="stylesheet" href="dist/css/notifier.css">
+        <link rel="stylesheet" href="css/qrapp.css">
+    </head>
+    <body>
+
+        <!-- QR-READER -->
+        <div id="reader-btn-container">
+            <button id="reader-btn" aria-label="Starta QR-läsaren"><img src="assets/qr.png" width="24" height="24" alt="QR-kod" /></button>
+        </div>
+        <div id="reader" width="250px"></div>
+
+        <!-- REVEALJS -->
+
+        <div class="reveal">
+
+            <section class="slides">
+
+                <!-- GLAS -->
+                <section>
+                    <section class="gradient-bg stack-intro" data-background-image="assets/agnes-glas-000.webp">
+                        <h1>Bitter skönhet</h1>
+                    </section>
+                    <section class="gradient-bg" data-background-image="assets/agnes-glas-000.webp">
+                        <p>Agnes de Frumerie blir ensam i Sverige att arbeta med glasdeg.</p>
+                    </section>
+                    <section class="gradient-bg" data-background-image="assets/agnes-glas-001.webp">
+                        <p>Hennes glaskonst får vackra former och mönster. Hon fulländar dem med sagofigurer i emalj och relief. Hon leker med deras ljussättning.</p>
+                    </section>
+                    <section class="gradient-bg" data-background-image="assets/agnes-glas-001.webp">
+                       <p>Det är den svåraste konstformen hon någonsin försökt sig på.</p>
+                    </section>
+                    <section class="gradient-bg" data-background-color="#000000">
+                        <p>Sverige vill inte ha den. Den är oönskad.</p>
+                    </section>
+                    <section>
+                        <blockquote>
+                            "Naturligtvis kan man säga att min konst är gammaldags, för jag avskyr innerligt vad som nu är modernt och som jag anser som en bedrövlig dekadens. Men mitt uttrycksmedel är nytt, det kan väl ingen förneka – knappast häller att det är vackert."
+                        </blockquote>
+                    </section>
+                </section>
+
+            </section>
+
+        </div>
+
+        <!-- /REVEALJS -->
+        <script src="dist/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				scrollActivationWidth: null,
+				width: 600,
+				height: 960,
+				margin: 0,
+				center: false,
+				minScale: 1,
+				maxScale: 1,
+				disableLayout: true,
+			});
+		</script>
+        <script src="dist/html5-qrcode.min.js"></script>
+        <script src="dist/notifier.js"></script>
+        <script src="js/layout-agnes.js"></script>
+        <script src="js/qrapp.js"></script>
+    </body>
+</html>

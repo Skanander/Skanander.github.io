@@ -1,0 +1,1 @@
+const slideLayout = ["Intro", "Suntakstolen", "Kata"];

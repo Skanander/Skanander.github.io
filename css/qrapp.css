@@ -137,6 +137,13 @@ section.has-light-background, section.has-light-background h1, section.has-light
     display: block;
 }
 
+.reveal blockquote {
+    width: 100%;
+    padding: 35px;
+    background: transparent;
+    box-shadow: none;
+}
+
 .backgrounds .slide-background.present.gradient-bg .slide-background-content::before {
     content: "";
     display: block;
