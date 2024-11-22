@@ -174,6 +174,10 @@ section.has-light-background, section.has-light-background h1, section.has-light
     animation: bg-opacity 1s forwards;
 }
 
+.present.background-reveal .slide-background-content {
+    animation: bg-opacity 10s;
+}
+
 @keyframes bg-opacity {
     from {
         opacity: 0;
