@@ -170,20 +170,33 @@ section.has-light-background, section.has-light-background h1, section.has-light
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }*/
 
-.backgrounds .slide-background.present.gradient-bg-transition .slide-background-content::before {
-    animation: bg-opacity 1s forwards;
-}
-
 .present.background-reveal .slide-background-content {
-    animation: bg-opacity 10s;
+    animation: bg-opacity-to-full 10s forwards;
 }
 
-@keyframes bg-opacity {
+.background-remove .slide-background-content {
+    opacity: 0;
+}
+
+.present.background-remove .slide-background-content {
+    animation: bg-opacity-to-zero 5s forwards;
+}
+
+@keyframes bg-opacity-to-full {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes bg-opacity-to-zero {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 
@@ -242,7 +255,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
     width: 48px;
     height: 48px;
     border: 0;
-    background: #f7f7f7;
+    background: rgba(255, 255, 255, 0.1);
     padding: 0;
     line-height: 0;
     border-radius: 50%;

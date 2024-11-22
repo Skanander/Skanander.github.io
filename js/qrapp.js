@@ -1,8 +1,8 @@
 const html5QrCode = new Html5Qrcode("reader");
 
 const readerBtn = document.querySelector("#reader-btn");
-const qrIcon = `<img src="assets/qr.png" width="24" height="24" alt="QR-kod" />`;
-const xIcon  = `<img src="assets/close.png" width="24" height="24" alt="Stäng" />`;
+const qrIcon = `<img src="assets/qrWhite.png" width="24" height="24" alt="QR-kod" />`;
+const xIcon  = `<img src="assets/closeWhite.png" width="24" height="24" alt="Stäng" />`;
 
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     console.log(decodedText);
