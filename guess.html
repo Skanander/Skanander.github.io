@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Gissa bajset</title>
+        <link rel="stylesheet" href="css/guess.css">
+    </head>
+    <body>
+        <main class="app">
+
+            <!-- Start -->
+            <div id="start" class="start-container">
+                <div class="start-inner-container">
+                    <div class="start-headline-container">
+                        <div class="start-headline">
+                            <p>Gissa <span class="strikethrough">spillningen</span></p>
+                            <h1>BAJSET</h1>
+                        </div>
+                    </div>
+                    <div class="start-button-container">
+                        <button id="startGame" class="grotesque-button">Spela</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question + image -->
+            <div id="question" class="question-container" style="display: none;">
+                <div class="question-inner-container">
+                    <div class="question">
+                        <img id="questionImage" width="100" height="100" src="assets/agnes-glas-004.webp" />
+                    </div>
+                </div>
+                <div class="top-left-float"><span id="question-icon">?</span></div>
+                <div class="bottom-right-float"><span id="question-instruction">Vem har bajsat här?</span></div>
+            </div>
+
+            <!-- Answers -->
+            <div id="answer" class="answer-container" style="display: none;">
+                <div class="answer-inner-container">
+                    <div class="answer-single">
+                        <div class="answer-single-inner-container">
+                            <div class="answer-image-container">
+                            </div>
+                            <div class="answer-label">
+                                <span class="answer-label-letter">A.</span>
+                                <span class="answer-label-name">UGGLA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="answer-single">
+                        <div class="answer-single-inner-container">
+                            <div class="answer-image-container">
+                            </div>
+                            <div class="answer-label">
+                                <span class="answer-label-letter">B.</span>
+                                <span class="answer-label-name">HARE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="answer-single">
+                        <div class="answer-single-inner-container">
+                            <div class="answer-image-container">
+                            </div>
+                            <div class="answer-label">
+                                <span class="answer-label-letter">C.</span>
+                                <span class="answer-label-name">RÄV</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="answer-single">
+                        <div class="answer-single-inner-container">
+                            <div class="answer-image-container">
+                            </div>
+                            <div class="answer-label">
+                                <span class="answer-label-letter">D.</span>
+                                <span class="answer-label-name">BJÖRN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End round -->
+            <div id="next" class="next-container" style="display: none;">
+                <div class="answer-trivia">
+                    <div class="answer-trivia-inner">
+                        <p id="answer-trivia-content">
+                            Björnen äter mest växter eller bär, men ibland äter den kött och spillningen blir då annorlunda.
+                        </p>
+                    </div>
+                </div>
+                <div class="next-round-button-container">
+                    <button id="nextGame" class="grotesque-button">Nästa fråga</button>
+                </div>
+            </div>
+        </main>
+        <script src="js/guess.js"></script>
+    </body>
+</html>
