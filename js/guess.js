@@ -9,6 +9,8 @@ function GuessingGame() {
     let nextScreen = document.getElementById("next");
     let questionImage = document.getElementById("questionImage");
     let answerCards = document.querySelectorAll(".answer-single");
+    
+    let firstRound = true;
 
     // Question objects
     let questions = [
@@ -59,48 +61,54 @@ function GuessingGame() {
         },
     ];
 
+    let askedQuestions = [];
+
     this.init = function() {
         btnStart.onclick = this.start;
         //btnNext.onclick = this.next();
     }
 
     this.start = function() {
-        let question = self.randomQuestion(questions);
+        let question;
+        let foundQuestion = false;
+        while (!foundQuestion) {
+            question = self.randomQuestion(questions);
+            console.log("Question", question);
+            if (!self.checkAvailability(askedQuestions, question)) {
+                foundQuestion = true;
+            }
+        }
+        
         questionImage.src = question.questionImage;
 
-        startScreen.style.display = "none";
-        questionScreen.style.display = "flex";
-        answerScreen.style.display = "flex";
+        if (firstRound === true) {
+            startScreen.style.display = "none";
+            questionScreen.style.display = "flex";
+            answerScreen.style.display = "flex";
+            firstRound = false;
+        } else {
+            // Reset colors
+            for (let i=0; i<answerCards.length; i++) {
+                answerCards[i].style.cssText = "background: var(--blueGreen);";
+            }
+        }
 
         self.setupAnswers(question);
     }
 
     this.setupAnswers = function(question) {
-        // Remove correct answer
-        let possibleAnswers = questions;
-        const index = possibleAnswers.indexOf(question);
-        if (index > -1) { // only splice array when item is found
-            possibleAnswers.splice(index, 1); // 2nd parameter means remove one item only
-        }
-
-        // Randomize remaining
-        self.shuffle(possibleAnswers);
-
-        // Remove all but first 3
-        possibleAnswers.length = 3;
-
-        // Add answer
-        possibleAnswers.push(question);
-
-        // Shuffle
-        self.shuffle(possibleAnswers);
-
-        // Insert
+        let answers = structuredClone(questions);
+        answers = answers.filter(function(item) { return item.name != question.name; });
+        self.shuffle(answers);
+        answers.length = 3;
+        answers.push(question);
+        self.shuffle(answers);
+        console.log(answers);
         for (let i=0; i<4; i++) {
-            answerCards[i].querySelector(".answer-image-container").style.cssText = 'background-image: url("' + possibleAnswers[i].answerImage + '");';
-            answerCards[i].querySelector(".answer-label-name").innerHTML = possibleAnswers[i].name;
+            answerCards[i].querySelector(".answer-label-name").innerHTML = answers[i].name;
+            answerCards[i].querySelector(".answer-image-container").style.cssText = 'background-image: url("' + answers[i].answerImage + '");';
             answerCards[i].onclick = function() {
-                self.checkAnswer(question, possibleAnswers[i], answerCards[i]);
+                self.checkAnswer(question, answers[i], answerCards[i]);
             }
         }
     }
@@ -108,6 +116,9 @@ function GuessingGame() {
     this.checkAnswer = function(question, answer, element) {
         if (answer.name === question.name) {
             element.style.cssText = "background: var(--green);";
+            // Add answer to list of asked questions
+            askedQuestions.push(answer);
+            setTimeout(self.start, 1000);
         } else {
             element.style.cssText = "background: var(--red);";
         }
@@ -133,6 +144,12 @@ function GuessingGame() {
             [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]];
         }
+    }
+
+    this.checkAvailability = function(arr, val) {
+        return arr.some(function (arrVal) {
+            return val === arrVal;
+        });
     }
 
 }
