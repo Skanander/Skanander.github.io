@@ -69,31 +69,35 @@ function GuessingGame() {
     }
 
     this.start = function() {
-        let question;
-        let foundQuestion = false;
-        while (!foundQuestion) {
-            question = self.randomQuestion(questions);
-            console.log("Question", question);
-            if (!self.checkAvailability(askedQuestions, question)) {
-                foundQuestion = true;
-            }
-        }
-        
-        questionImage.src = question.questionImage;
-
-        if (firstRound === true) {
-            startScreen.style.display = "none";
-            questionScreen.style.display = "flex";
-            answerScreen.style.display = "flex";
-            firstRound = false;
+        if (askedQuestions.length === questions.length) {
+            window.location.reload();
         } else {
-            // Reset colors
-            for (let i=0; i<answerCards.length; i++) {
-                answerCards[i].style.cssText = "background: var(--blueGreen);";
+            let question;
+            let foundQuestion = false;
+            while (!foundQuestion) {
+                question = self.randomQuestion(questions);
+                console.log("Question", question);
+                if (!self.checkAvailability(askedQuestions, question)) {
+                    foundQuestion = true;
+                }
             }
-        }
+            
+            questionImage.src = question.questionImage;
 
-        self.setupAnswers(question);
+            if (firstRound === true) {
+                startScreen.style.display = "none";
+                questionScreen.style.display = "flex";
+                answerScreen.style.display = "flex";
+                firstRound = false;
+            } else {
+                // Reset colors
+                for (let i=0; i<answerCards.length; i++) {
+                    answerCards[i].style.cssText = "background: var(--blueGreen);";
+                }
+            }
+
+            self.setupAnswers(question);
+        }
     }
 
     this.setupAnswers = function(question) {
