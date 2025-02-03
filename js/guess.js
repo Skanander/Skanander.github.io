@@ -7,7 +7,7 @@ function GuessingGame() {
     let questionScreen = document.getElementById("question");
     let answerScreen = document.getElementById("answer");
     let nextScreen = document.getElementById("next");
-    let questionImage = document.getElementById("questionImage");
+    let questionImage = document.getElementById("q-img");
     let answerCards = document.querySelectorAll(".answer-single");
     
     let firstRound = true;
@@ -87,12 +87,12 @@ function GuessingGame() {
             if (firstRound === true) {
                 startScreen.style.display = "none";
                 questionScreen.style.display = "flex";
-                answerScreen.style.display = "flex";
+                answerScreen.style.display = "grid";
                 firstRound = false;
             } else {
                 // Reset colors
                 for (let i=0; i<answerCards.length; i++) {
-                    answerCards[i].style.cssText = "background: var(--blueGreen);";
+                    answerCards[i].style.cssText = "background-color: white;";
                 }
             }
 
@@ -108,9 +108,11 @@ function GuessingGame() {
         answers.push(question);
         self.shuffle(answers);
         console.log(answers);
+        console.log(answerCards);
         for (let i=0; i<4; i++) {
             answerCards[i].querySelector(".answer-label-name").innerHTML = answers[i].name;
-            answerCards[i].querySelector(".answer-image-container").style.cssText = 'background-image: url("' + answers[i].answerImage + '");';
+            answerCards[i].style.backgroundImage = "url('" + answers[i].answerImage + "')";
+            //answerCards[i].style.backgroundImage = "url('assets/guess/fox.jpg')";
             answerCards[i].onclick = function() {
                 self.checkAnswer(question, answers[i], answerCards[i]);
             }
@@ -119,12 +121,12 @@ function GuessingGame() {
 
     this.checkAnswer = function(question, answer, element) {
         if (answer.name === question.name) {
-            element.style.cssText = "background: var(--green);";
+            element.style.backgroundColor = "var(--green)";
             // Add answer to list of asked questions
             askedQuestions.push(answer);
             setTimeout(self.start, 1000);
         } else {
-            element.style.cssText = "background: var(--red);";
+            element.style.backgroundColor = "var(--red)";
         }
     }
 
@@ -145,8 +147,7 @@ function GuessingGame() {
             currentIndex--;
         
             // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
         }
     }
 
