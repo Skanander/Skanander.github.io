@@ -9,6 +9,8 @@ function GuessingGame() {
     let nextScreen = document.getElementById("next");
     let questionImage = document.getElementById("q-img");
     let answerCards = document.querySelectorAll(".answer-single");
+    let questionIcon = document.getElementById("q-icon");
+    let questionTrivia = document.getElementById("q-trivia");
     
     let firstRound = true;
 
@@ -18,86 +20,116 @@ function GuessingGame() {
             answerImage: "assets/guess/bear.jpg",
             questionImage: "assets/guess/bear.jpg",
             name: "Björn",
+            trivia: "Björnen äter mest växter eller bär, men ibland äter den kött och spillningen blir då annorlunda.",
         },
         hare = {
             answerImage: "assets/guess/hare.jpg",
             questionImage: "assets/guess/hare.jpg",
             name: "Hare",
+            trivia: "Löksås.",
         },
         owl = {
             answerImage: "assets/guess/owl.jpg",
             questionImage: "assets/guess/owl.jpg",
             name: "Uggla",
+            trivia: "Löksås.",
         },
         fox = {
             answerImage: "assets/guess/fox.jpg",
             questionImage: "assets/guess/fox.jpg",
             name: "Räv",
+            trivia: "Löksås.",
         },
         deer = {
             answerImage: "assets/guess/fox.jpg",
             questionImage: "assets/guess/fox.jpg",
             name: "Rådjur",
+            trivia: "Löksås.",
         },
         moose = {
             answerImage: "assets/guess/fox.jpg",
             questionImage: "assets/guess/fox.jpg",
             name: "Älg",
+            trivia: "Löksås.",
         },
         forestMouse = {
             answerImage: "assets/guess/fox.jpg",
             questionImage: "assets/guess/fox.jpg",
             name: "Skogsmus",
+            trivia: "Löksås.",
         },
         squirrel = {
             answerImage: "assets/guess/fox.jpg",
             questionImage: "assets/guess/fox.jpg",
             name: "Ekorre",
+            trivia: "Löksås.",
         },
         wolf = {
             answerImage: "assets/guess/fox.jpg",
             questionImage: "assets/guess/fox.jpg",
             name: "Varg",
+            trivia: "Löksås.",
         },
     ];
 
     let askedQuestions = [];
 
     this.init = function() {
-        btnStart.onclick = this.start;
-        //btnNext.onclick = this.next();
+        btnStart.onclick = function() {
+            btnStart.disabled = true;
+            setTimeout(self.start, 500);
+        }
+        btnNext.onclick = this.next;
     }
 
     this.start = function() {
+        btnNext.disabled = false;
+        let question;
+        let foundQuestion = false;
+        while (!foundQuestion) {
+            question = self.randomQuestion(questions);
+            console.log("Question", question);
+            if (!self.checkAvailability(askedQuestions, question)) {
+                foundQuestion = true;
+            }
+        }
+        
+        questionImage.src = question.questionImage;
+
+        if (firstRound === true) {
+            startScreen.style.display = "none";
+            questionScreen.classList.add("scale-in-center");
+            answerScreen.classList.add("scale-in-center");
+            questionScreen.style.display = "flex";
+            answerScreen.style.display = "grid";
+            firstRound = false;
+        } else {
+            // Reset colors
+            for (let i=0; i<answerCards.length; i++) {
+                answerCards[i].style.cssText = "background-color: white;";
+            }
+        }
+
+        self.setupAnswers(question);
+    }
+
+    this.next = function() {
         if (askedQuestions.length === questions.length) {
             window.location.reload();
-        } else {
-            let question;
-            let foundQuestion = false;
-            while (!foundQuestion) {
-                question = self.randomQuestion(questions);
-                console.log("Question", question);
-                if (!self.checkAvailability(askedQuestions, question)) {
-                    foundQuestion = true;
-                }
-            }
-            
-            questionImage.src = question.questionImage;
-
-            if (firstRound === true) {
-                startScreen.style.display = "none";
-                questionScreen.style.display = "flex";
-                answerScreen.style.display = "grid";
-                firstRound = false;
-            } else {
-                // Reset colors
-                for (let i=0; i<answerCards.length; i++) {
-                    answerCards[i].style.cssText = "background-color: white;";
-                }
-            }
-
-            self.setupAnswers(question);
         }
+        btnNext.disabled = true;
+        setTimeout(function() {
+            nextScreen.classList.remove("scale-in-center");
+            nextScreen.classList.add("scale-out-center");
+            questionImage.classList.remove("in");
+            setTimeout(function() {
+                self.start();
+                answerScreen.classList.remove("scale-out-center");
+                answerScreen.classList.add("scale-in-center");
+                questionImage.classList.add("in");
+                questionIcon.innerHTML = "?";
+            }, 500);
+        }, 800);
     }
 
     this.setupAnswers = function(question) {
@@ -124,7 +156,18 @@ function GuessingGame() {
             element.style.backgroundColor = "var(--green)";
             // Add answer to list of asked questions
             askedQuestions.push(answer);
-            setTimeout(self.start, 1000);
+            setTimeout(function() {
+                answerScreen.classList.remove("scale-in-center");
+                answerScreen.classList.add("scale-out-center");
+                questionTrivia.innerHTML = answer.trivia;
+                setTimeout(function() {
+                    if (nextScreen.style.display === "none") {
+                        nextScreen.style.display = "flex";
+                    }
+                    questionIcon.innerHTML = "!";
+                    nextScreen.classList.add("scale-in-center");
+                }, 800);
+            }, 800);
         } else {
             element.style.backgroundColor = "var(--red)";
         }
