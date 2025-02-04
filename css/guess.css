@@ -219,14 +219,21 @@ body {
     flex: 1;
     display: flex;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 #next .next-trivia > div {
     background-color: white;
     border-radius: 20px;
-    padding: 40px;
+    padding: 40px 60px;
     flex: 1;
     font-size: 1.25rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #next .next-button-container {
@@ -260,9 +267,9 @@ button:active {
     .app {
         grid-template-rows: 1fr;
         grid-template-columns: 1fr 1fr;
-        padding: 40px 160px;
         grid-template-areas: 
         "q a";
+        padding: 60px 120px;
     }
 
     #start {
@@ -279,64 +286,4 @@ button:active {
         border-radius: 20px;
     }
 }
-
-.scale-out-center {
-	-webkit-animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-	        animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-
-.scale-in-center {
-	-webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
- @-webkit-keyframes scale-in-center {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
-    }
-  }
-  @keyframes scale-in-center {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
-    }
-  }
-
- @-webkit-keyframes scale-out-center {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
-    }
-  }
-  @keyframes scale-out-center {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 1;
-    }
-  }
   
