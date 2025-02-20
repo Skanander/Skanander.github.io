@@ -126,6 +126,7 @@ body {
     border-radius: 20px;
     transition: .8s;
     opacity: 0;
+    background-color: white;
 }
 
 #question img.in {

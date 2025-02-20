@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gissa bajset!</title>
+        <link rel="stylesheet" href="dist/css/animate.min.css"/>
+        <link rel="stylesheet" href="css/guessingGame.css">
+    </head>
+    <body>
+        <div id="gameMenu">
+            <h1>Gissa bajset</h1>
+            <span>Klicka på skärmen för att börja spela</span>
+            <div class="backgroundBlend">
+                <img src="assets/guess/forest-skyline-silhouette.png" />
+            </div>
+        </div>
+
+        <div id="gameContainer">
+            <div id="questionContainer">
+                <img src="assets/guess/radjur.jpg" alt="Poop" />
+                <h2>Vem har bajsat här?</h2>
+            </div>
+            <div id="answerContainer">
+                <div class="answerButton">
+                    <div class="answerLabel"><span>A.</span><span class="animalName">Älg</span></div>
+                    <img src="assets/guess/alg.jpg" alt="Djur" />
+                </div>
+                <div class="answerButton">
+                    <div class="answerLabel"><span>B.</span><span class="animalName">Rådjur</span></div>
+                    <img src="assets/guess/radjur.jpg" alt="Djur" />
+                </div>
+                <div class="answerButton">
+                    <div class="answerLabel"><span>C.</span><span class="animalName">Utter</span></div>
+                    <img src="assets/guess/utter.jpg" alt="Djur" />
+                </div>
+                <div class="answerButton">
+                    <div class="answerLabel"><span>D.</span><span class="animalName">Skogsmus</span></div>
+                    <img src="assets/guess/skogsmus.jpg" alt="Djur" />
+                </div>
+            </div>
+            <div class="backgroundBlend">
+                <img src="assets/guess/forest-skyline-silhouette-gray.png" />
+            </div>
+        </div>
+
+        <div id="triviaContainer"></div>
+
+        <script src="js/guessingGame.js"></script>
+    </body>
+</html>

@@ -1,0 +1,263 @@
+:root {
+    --gray-950: #151515;
+    --gray-900: #262626;
+    --gray-800: #393939;
+    --gray-700: #525252;
+    --gray-600: #6f6f6f;
+    --gray-500: #8c8c8c;
+    --gray-400: #a8a8a8;
+    --gray-300: #c7c7c7;
+    --gray-200: #d3d3d3;
+    --gray-100: #e0e0e0;
+    --gray-50: #f4f4f4;
+    --red-950: #2d0709;
+    --red-900: #520408;
+    --red-800: #750e13;
+    --red-700: #a2191f;
+    --red-600: #da1e28;
+    --red-500: #fa4d56;
+    --red-400: #ff8389;
+    --red-300: #ffb3b8;
+    --red-200: #ffc5c9;
+    --red-100: #ffd7d9;
+    --red-50: #fff1f1;
+    --green-950: #0c1714;
+    --green-900: #192924;
+    --green-800: #283e37;
+    --green-700: #3b584f;
+    --green-600: #52776c;
+    --green-500: #689588;
+    --green-400: #7db3a3 /* locked */;
+    --green-300: #94d3c1;
+    --green-200: #9ee1cd;
+    --green-100: #a8efda;
+    --green-50: #e2f9f2;
+    --yellow: #f4e285;
+    --boxShadow: 8px 8px 0 var(--gray-900);
+    --boxShadowSmall: 4px 4px 0 var(--gray-900);
+}
+
+/* figtree-600 - latin_latin-ext */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/figtree-v6-latin_latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* figtree-800 - latin_latin-ext */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../assets/fonts/figtree-v6-latin_latin-ext-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+}
+
+body {
+    background-color: var(--yellow);
+    font-family: "Figtree";
+    font-weight: 600;
+    color: var(--gray-950);
+    user-select: none;
+    font-size: 1.25rem;
+}
+
+#gameMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--green-400);
+    transition: background-color 5s ease-in-out;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#gameMenu h1 {
+    font-weight: 800;
+    font-size: 10vw;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    z-index: 1010;
+}
+
+#gameMenu span {
+    margin-top: 1.25rem;
+    text-align: center;
+    letter-spacing: 10%;
+    text-transform: uppercase;
+    z-index: 1010;
+}
+
+#gameMenu .backgroundBlend {
+    mix-blend-mode: multiply;
+    position: absolute;
+    opacity: 1;
+    transition: opacity .5s;
+    z-index: 1005;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100svh;
+}
+
+.backgroundBlend img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+    #gameMenu h1 {
+        font-size: 20vw;
+    }
+}
+
+#gameContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100svh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 120px;
+}
+
+#gameContainer .backgroundBlend {
+    mix-blend-mode: multiply;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity .5s;
+    width: 100%;
+    height: 100svh;
+    z-index: 10;
+}
+
+#answerContainer, #questionContainer {
+    z-index: 20;
+}
+
+#answerContainer {
+    display: grid;
+    grid-template-columns: 250px 250px;
+    grid-template-rows: 250px 250px;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+#answerContainer .answerButton {
+    background-color: var(--green-400);
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--boxShadow);
+    transition: transform .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 2px solid var(--gray-950);
+}
+
+#answerContainer .answerButton:active {
+    transform: translateY(15px);
+}
+
+#answerContainer .answerButton img {
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+#answerContainer .answerLabel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: var(--gray-50);
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    width: 220px;
+    box-shadow: var(--boxShadowSmall);
+}
+
+.answerLabel h3 {
+    margin: 0;
+}
+
+#questionContainer {
+    display: flex;
+    width: 540px;
+    height: 540px;
+    border-radius: 20px;
+    box-shadow: var(--boxShadow);
+    position: relative;
+}
+
+#questionContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+    border: 2px solid var(--gray-950);
+}
+
+#questionContainer h2 {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    text-align: center;
+    background: var(--gray-50);
+    padding: 10px;
+    border-radius: 50px;
+}
+
+@media only screen and (max-width: 1339px) {
+    #gameContainer {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    #answerContainer {
+        gap: 20px;
+    }
+}

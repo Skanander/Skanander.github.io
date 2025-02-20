@@ -16,59 +16,83 @@ function GuessingGame() {
 
     // Question objects
     let questions = [
-        bear = {
+        bjorn = {
             answerImage: "assets/guess/bear.jpg",
-            questionImage: "assets/guess/bear.jpg",
+            questionImage: "assets/guess/poop/bjorn.png",
             name: "Björn",
             trivia: "Björnen äter mest växter eller bär, men ibland äter den kött och spillningen blir då annorlunda.",
         },
         hare = {
-            answerImage: "assets/guess/hare.jpg",
-            questionImage: "assets/guess/hare.jpg",
+            answerImage: "assets/guess/hare.webp",
+            questionImage: "assets/guess/poop/hare.png",
             name: "Hare",
-            trivia: "Löksås.",
+            trivia: "Trivia.",
         },
-        owl = {
-            answerImage: "assets/guess/owl.jpg",
-            questionImage: "assets/guess/owl.jpg",
-            name: "Uggla",
-            trivia: "Löksås.",
+        fladdermus = {
+            answerImage: "assets/guess/fladdermus.jpg",
+            questionImage: "assets/guess/poop/fladdermus.png",
+            name: "Fladdermus",
+            trivia: "Trivia.",
         },
-        fox = {
-            answerImage: "assets/guess/fox.jpg",
-            questionImage: "assets/guess/fox.jpg",
+        rav = {
+            answerImage: "assets/guess/rav.jpg",
+            questionImage: "assets/guess/poop/rav.png",
             name: "Räv",
-            trivia: "Löksås.",
+            trivia: "Trivia.",
         },
-        deer = {
-            answerImage: "assets/guess/fox.jpg",
-            questionImage: "assets/guess/fox.jpg",
+        radjur = {
+            answerImage: "assets/guess/radjur.jpg",
+            questionImage: "assets/guess/poop/radjur.png",
             name: "Rådjur",
-            trivia: "Löksås.",
+            trivia: "Eftersom rådjur idisslar ser deras bajs nästan alltid likadant ut.",
         },
-        moose = {
-            answerImage: "assets/guess/fox.jpg",
-            questionImage: "assets/guess/fox.jpg",
+        alg = {
+            answerImage: "assets/guess/alg.jpg",
+            questionImage: "assets/guess/poop/alg.png",
             name: "Älg",
-            trivia: "Löksås.",
+            trivia: "Eftersom älgar idisslar ser deras bajs nästan alltid likadant ut.",
         },
-        forestMouse = {
-            answerImage: "assets/guess/fox.jpg",
-            questionImage: "assets/guess/fox.jpg",
+        skogsmus = {
+            answerImage: "assets/guess/skogsmus.jpg",
+            questionImage: "assets/guess/poop/skogsmus.png",
             name: "Skogsmus",
-            trivia: "Löksås.",
+            trivia: "Trivia.",
         },
-        squirrel = {
-            answerImage: "assets/guess/fox.jpg",
-            questionImage: "assets/guess/fox.jpg",
-            name: "Ekorre",
-            trivia: "Löksås.",
+        tjader = {
+            answerImage: "assets/guess/tjader.jpg",
+            questionImage: "assets/guess/poop/tjader.png",
+            name: "Tjäder",
+            trivia: "Trivia.",
         },
-        wolf = {
-            answerImage: "assets/guess/fox.jpg",
-            questionImage: "assets/guess/fox.jpg",
+        varg = {
+            answerImage: "assets/guess/varg.jpg",
+            questionImage: "assets/guess/poop/varg.png",
             name: "Varg",
-            trivia: "Löksås.",
+            trivia: "Vargspillning är ganska lik hundars, men innehåller ofta hår.",
+        },
+        vildsvin = {
+            answerImage: "assets/guess/vildsvin.jpg",
+            questionImage: "assets/guess/poop/vildsvin.png",
+            name: "Vildsvin",
+            trivia: "Trivia.",
+        },
+        orre = {
+            answerImage: "assets/guess/orre.jpg",
+            questionImage: "assets/guess/poop/orre.png",
+            name: "Orre",
+            trivia: "Trivia.",
+        },
+        utter = {
+            answerImage: "assets/guess/utter.jpg",
+            questionImage: "assets/guess/poop/utter.png",
+            name: "Utter",
+            trivia: "Trivia.",
+        },
+        kanin = {
+            answerImage: "assets/guess/kanin.jpg",
+            questionImage: "assets/guess/poop/kanin.png",
+            name: "Kanin",
+            trivia: "Trivia.",
         },
     ];
 
