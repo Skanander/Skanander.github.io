@@ -252,12 +252,42 @@ body {
 }
 
 @media only screen and (max-width: 1339px) {
+    body {
+        font-size: 1rem;
+    }
+
     #gameContainer {
         flex-direction: column;
         gap: 40px;
     }
 
+    #questionContainer {
+        width: 330px;
+        height: 330px;
+    }
+
+    #questionContainer h2 {
+        font-size: 1.25rem;
+    }
+
     #answerContainer {
-        gap: 20px;
+        grid-template-columns: 150px 150px;
+        grid-template-rows: 150px 150px;
+        gap: 30px;
+    }
+
+    #answerContainer .answerButton img {
+        width: 130px;
+        height: 130px;
+    }
+
+    #answerContainer .answerLabel {
+        width: 130px;
+        padding: 5px 10px;
+        justify-content: center;
+    }
+
+    #answerContainer .answerLabel span:first-child {
+        display: none;
     }
 }
