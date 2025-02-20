@@ -12,31 +12,31 @@
             <h1>Gissa bajset</h1>
             <span>Klicka på skärmen för att börja spela</span>
             <div class="backgroundBlend">
-                <img src="assets/guess/forest-skyline-silhouette.png" />
+                <img src="assets/guess/forest-skyline-silhouette.png" draggable="false" />
             </div>
         </div>
 
         <div id="gameContainer">
             <div id="questionContainer">
-                <img src="assets/guess/radjur.jpg" alt="Poop" />
+                <img id="questionImage" src="assets/guess/radjur.jpg" alt="Poop" draggable="false" />
                 <h2>Vem har bajsat här?</h2>
             </div>
             <div id="answerContainer">
                 <div class="answerButton">
                     <div class="answerLabel"><span>A.</span><span class="answerName">Älg</span></div>
-                    <img src="assets/guess/alg.jpg" alt="Djur" />
+                    <img class="answerImage" src="assets/guess/alg.jpg" alt="Djur" draggable="false" />
                 </div>
                 <div class="answerButton">
                     <div class="answerLabel"><span>B.</span><span class="answerName">Rådjur</span></div>
-                    <img src="assets/guess/radjur.jpg" alt="Djur" />
+                    <img class="answerImage" src="assets/guess/radjur.jpg" alt="Djur" draggable="false" />
                 </div>
                 <div class="answerButton">
                     <div class="answerLabel"><span>C.</span><span class="answerName">Utter</span></div>
-                    <img src="assets/guess/utter.jpg" alt="Djur" />
+                    <img class="answerImage" src="assets/guess/utter.jpg" alt="Djur" draggable="false" />
                 </div>
                 <div class="answerButton">
                     <div class="answerLabel"><span>D.</span><span class="answerName">Skogsmus</span></div>
-                    <img src="assets/guess/skogsmus.jpg" alt="Djur" />
+                    <img class="answerImage" src="assets/guess/skogsmus.jpg" alt="Djur" draggable="false" />
                 </div>
             </div>
             <div class="backgroundBlend">
@@ -44,7 +44,11 @@
             </div>
         </div>
 
-        <div id="triviaContainer"></div>
+        <div id="triviaContainer" style="display: none;">
+            <p id="triviaText"></p>
+            <div class="backgroundBlend">
+            </div>
+        </div>
 
         <script src="js/guessingGame.js"></script>
     </body>
