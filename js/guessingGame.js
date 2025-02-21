@@ -254,6 +254,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     document.addEventListener('contextmenu', event => event.preventDefault());
 
+    // Reload app if no input is detected
+    let timeToReset = Date.now();
+    let hasClickedOnce = false;
+    document.addEventListener('click', (event) => {
+        timeToReset = Date.now();
+        hasClickedOnce = true;
+    });
+
+    let checkResetTimer = setInterval(function() {
+        if (hasClickedOnce) {
+            if (Date.now() > timeToReset + 90000) { //90 sec
+                window.location.reload();
+            }
+        }
+    }, 1000);
+
     let gameMenu = document.querySelector("#gameMenu");
 
     gameMenu.style.backgroundColor = "var(--green-400)"; //default

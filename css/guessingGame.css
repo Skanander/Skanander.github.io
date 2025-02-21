@@ -84,6 +84,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: var(--green-400);
+    border-bottom: 15px solid var(--green-800);
     transition: background-color 5s ease-in-out;
 }
 
@@ -266,6 +267,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: var(--green-400);
+    border-bottom: 15px solid var(--green-800);
 }
 
 #triviaText {
