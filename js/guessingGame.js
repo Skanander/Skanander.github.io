@@ -16,7 +16,7 @@ function GuessingGame() {
             answerImage: "assets/guess/hare.webp",
             questionImage: "assets/guess/poop/hare.png",
             name: "Hare",
-            trivia: "Trivia.",
+            trivia: 'Harens spillning är mörka, runda kulor, cirka 1,5 cm i diameter. "Pluttarna" hittas i rikliga mängder. Harens föda är ganska näringsfattig, vilket gör att den måste äta mycket. Därför producerar den också hundratals pluttar per dygn.',
         },
         fladdermus = {
             answerImage: "assets/guess/fladdermus.jpg",
@@ -52,7 +52,7 @@ function GuessingGame() {
             answerImage: "assets/guess/tjader.jpg",
             questionImage: "assets/guess/poop/tjader.png",
             name: "Tjäder",
-            trivia: "Trivia.",
+            trivia: "Tjäderns föda vintertid består enbart av tallbarr. Korvarna är grova och lösa, med tydligt synliga rester av tallbarr. De är gulgröna till färgen, men blir med tiden bruna och slutligen gråa.",
         },
         varg = {
             answerImage: "assets/guess/varg.jpg",
@@ -89,8 +89,24 @@ function GuessingGame() {
     let firstRound = true;
     let askedQuestions = [];
 
+    let sndConfirm = new Howl({
+        src: ['assets/guess/wav/positive.wav']
+      });
+
+    let sndError = new Howl({
+        src: ['assets/guess/wav/negative_2.wav']
+      });
+
+    let sndOpen = new Howl({
+        src: ['assets/guess/ogg/drop_004.ogg']
+      });
+
+    let sndClose = new Howl({
+        src: ['assets/guess/ogg/drop_003.ogg']
+      });
+
+
     this.init = function() {
-        console.log("init");
         self.start();
     }
 
@@ -100,7 +116,7 @@ function GuessingGame() {
 
         while (!foundQuestion) {
             question = self.randomQuestion(questions);
-            console.log("Question", question);
+            console.log("Current question: ", question.name);
             if (!self.checkAvailability(askedQuestions, question)) {
                 foundQuestion = true;
             }
@@ -124,6 +140,7 @@ function GuessingGame() {
         for (let i=0; i<answerCards.length; i++) {
             answerCards[i].style.opacity = "0";
         }
+        sndClose.play();
         animateCSS(triviaScreen, "slideOutUp").then(() => {
             triviaScreen.style.display = "none";
             if (askedQuestions.length === questions.length) {
@@ -148,35 +165,40 @@ function GuessingGame() {
                 self.checkAnswer(question, answers[i], answerCards[i]);
             }
         }
-        let x=0;
+        let i=0;
         let animateCards = setInterval(function() {
-            console.log("opacity");
-            answerCards[x].style.opacity = "1";
-            x++;
-            if (x > 3) {
+            answerCards[i].style.opacity = "1";
+            i++;
+            if (i > 3) {
                 clearInterval(animateCards);
             }
         }, 500);
     }
 
+    this.delegateAnswer = function(question, answer, element) {
+        self.checkAnswer(question, answer, element);
+    }
+
     this.checkAnswer = function(question, answer, element) {
         if (answer.name === question.name) {
             element.onclick = void(0);
+            sndConfirm.play();
+            element.style.backgroundColor = "limegreen";
             animateCSS(element, "tada").then(() => {
-                element.style.backgroundColor = "limegreen";
                 // Add answer to list of asked questions
                 askedQuestions.push(answer);
                 triviaText.innerHTML = answer.trivia;
                 triviaScreen.style.display = "flex";
+                sndOpen.play();
                 animateCSS(triviaScreen, "slideInDown").then(() => {
                     triviaScreen.onclick = self.next;
                 });
             });
         } else {
             element.onclick = void(0);
-            animateCSS(element, "headShake").then(() => {
-                element.style.backgroundColor = "var(--red-500)";
-            });
+            sndError.play();
+            element.style.backgroundColor = "var(--red-500)";
+            animateCSS(element, "headShake");
         }
     }
 
@@ -230,6 +252,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let guessingGame = new GuessingGame();
     guessingGame.init();
 
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
     let gameMenu = document.querySelector("#gameMenu");
 
     gameMenu.style.backgroundColor = "var(--green-400)"; //default
@@ -243,12 +267,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }, 10000);
 
+    let closeSound = new Howl({
+        src: ['assets/guess/ogg/drop_003.ogg']
+      });
+
     gameMenu.onclick = function() {
         this.classList.add("animate__animated", "animate__slideOutUp");
+        closeSound.play();
         this.querySelector(".backgroundBlend").style.opacity = "0";
         if (gameMenu.classList.contains("animate__animated")) {
             clearInterval(colorChangeMenu);
-            console.log("gameMenu interval cleared");
         }
     }
 });
