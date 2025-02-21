@@ -332,4 +332,10 @@ body {
     #answerContainer .answerLabel span:first-child {
         display: none;
     }
+
+    #triviaText {
+        font-size: 1.125rem;
+        padding: 40px;
+        max-width: 90%;
+    }
 }
