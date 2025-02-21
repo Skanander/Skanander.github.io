@@ -187,13 +187,13 @@ body {
     align-items: center;
     position: relative;
     border: 2px solid var(--gray-950);
-    transition: .3s;
+    transition: .2s;
 }
-
+/*
 #answerContainer .answerButton:active {
     transform: translateY(15px);
 }
-
+*/
 #answerContainer .answerButton img {
     width: 220px;
     height: 220px;

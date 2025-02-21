@@ -113,15 +113,18 @@ function GuessingGame() {
         } else {
             // Reset colors
             for (let i=0; i<answerCards.length; i++) {
-                answerCards[i].style.cssText = "background-color: var(--green-400);";
+                answerCards[i].style.backgroundColor = "var(--green-400)";
             }
         }
         self.setupAnswers(question);
     }
 
     this.next = function() {
-        triviaScreen.onclick = void(0);
-        animateCSS(triviaScreen, "slideOutUp").then((message) => {
+        triviaScreen.onclick = void(0); // remove onclick behavior
+        for (let i=0; i<answerCards.length; i++) {
+            answerCards[i].style.opacity = "0";
+        }
+        animateCSS(triviaScreen, "slideOutUp").then(() => {
             triviaScreen.style.display = "none";
             if (askedQuestions.length === questions.length) {
                 window.location.reload();
@@ -145,19 +148,35 @@ function GuessingGame() {
                 self.checkAnswer(question, answers[i], answerCards[i]);
             }
         }
+        let x=0;
+        let animateCards = setInterval(function() {
+            console.log("opacity");
+            answerCards[x].style.opacity = "1";
+            x++;
+            if (x > 3) {
+                clearInterval(animateCards);
+            }
+        }, 500);
     }
 
     this.checkAnswer = function(question, answer, element) {
         if (answer.name === question.name) {
-            element.style.backgroundColor = "limegreen";
-            // Add answer to list of asked questions
-            askedQuestions.push(answer);
-            triviaText.innerHTML = answer.trivia;
-            triviaScreen.style.display = "flex";
-            animateCSS(triviaScreen, "slideInDown");
-            triviaScreen.onclick = self.next;
+            element.onclick = void(0);
+            animateCSS(element, "tada").then(() => {
+                element.style.backgroundColor = "limegreen";
+                // Add answer to list of asked questions
+                askedQuestions.push(answer);
+                triviaText.innerHTML = answer.trivia;
+                triviaScreen.style.display = "flex";
+                animateCSS(triviaScreen, "slideInDown").then(() => {
+                    triviaScreen.onclick = self.next;
+                });
+            });
         } else {
-            element.style.backgroundColor = "var(--red-500)";
+            element.onclick = void(0);
+            animateCSS(element, "headShake").then(() => {
+                element.style.backgroundColor = "var(--red-500)";
+            });
         }
     }
 
