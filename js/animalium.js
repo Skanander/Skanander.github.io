@@ -1,6 +1,7 @@
 let x;
 let y;
 let currentTarget = null;
+let clone = null;
 
 const questions = [
     giraffe = {
@@ -36,9 +37,7 @@ function moveElement(e) {
 }
 
 function removeElement(e) { 
-  if (!cloneElement) {
-    currentTarget.remove();
-  }
+    e.remove();
 }
 
 function stickElement(e) { 
@@ -57,7 +56,9 @@ function stickElement(e) {
         }
     });
 
+    element.draggable = false;
     this.appendChild(element);
+    //removeElement(currentTarget);
     currentTarget = null;
 
     // Scoring
@@ -97,7 +98,7 @@ function generateLabels() {
         latinName.dataset.latinName = questions[i].latinName;
         latinName.textContent = questions[i].latinName;
         // Can be same
-        let continentLabels = labels.querySelectorAll("[data-continent]");
+        let continentLabels = labels.querySelectorAll("p[data-continent]");
         if (continentLabels.length > 0) {
             continentLabels.forEach((label) => {
                 if (label.dataset.continent != questions[i].continent) {
@@ -143,6 +144,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     generateLabels();
     generateAnswers();
 
+    // Bind event listeners:
+
     const labels = document.getElementById('labels');
     const targets = document.querySelectorAll('.drag-target');
 
@@ -158,5 +161,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
         target.addEventListener('drop', stickElement);
     });
   });
-// Bind event listeners:
 

@@ -44,11 +44,14 @@ body {
 
 .draggable-elements p, .drag-target p {
     display: inline-block;
-    cursor: pointer;
     padding: 10px 20px;
     margin: 10px;
     border-radius: 5px;
     user-select: none;
+}
+
+.draggable-elements p {
+    cursor: pointer;
 }
 
 .drag-target-wrapper {
