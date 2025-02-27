@@ -40,6 +40,9 @@ body {
 
 .draggable-elements {
     background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .draggable-elements p, .drag-target p {
@@ -48,9 +51,6 @@ body {
     margin: 10px;
     border-radius: 5px;
     user-select: none;
-}
-
-.draggable-elements p {
     cursor: pointer;
 }
 
@@ -94,4 +94,10 @@ p[data-continent] {
     background-color: #fefefe;
     padding: 10px;
     border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .app {
+        flex-direction: column;
+    }
 }

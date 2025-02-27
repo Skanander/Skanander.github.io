@@ -46,19 +46,30 @@ function stickElement(e) {
     let children = this.childNodes;
     children.forEach((child) => {
         if (child.dataset.name && element.dataset.name) {
+            if (!document.getElementById("labels").querySelector("[data-name='" + child.dataset.name + "']")) {
+                let replacementLabel = cloneElement ? child.cloneNode(true) : child;
+                document.getElementById("labels").appendChild(replacementLabel);
+            }
             child.remove();
         }
         if (child.dataset.latinName && element.dataset.latinName) {
+            if (!document.getElementById("labels").querySelector("[data-name='" + child.dataset.latinName + "']")) {
+                const replacementLabel = cloneElement ? child.cloneNode(true) : child;
+                document.getElementById("labels").appendChild(replacementLabel);
+            }
             child.remove();
         }
         if (child.dataset.continent && element.dataset.continent) {
+            if (!document.getElementById("labels").querySelector("[data-name='" + child.dataset.continent + "']")) {
+                const replacementLabel = cloneElement ? child.cloneNode(true) : child;
+                document.getElementById("labels").appendChild(replacementLabel);
+            }
             child.remove();
         }
     });
 
-    element.draggable = false;
     this.appendChild(element);
-    //removeElement(currentTarget);
+    removeElement(currentTarget);
     currentTarget = null;
 
     // Scoring
@@ -97,26 +108,16 @@ function generateLabels() {
         name.textContent = questions[i].name;
         latinName.dataset.latinName = questions[i].latinName;
         latinName.textContent = questions[i].latinName;
-        // Can be same
-        let continentLabels = labels.querySelectorAll("p[data-continent]");
-        if (continentLabels.length > 0) {
-            continentLabels.forEach((label) => {
-                if (label.dataset.continent != questions[i].continent) {
-                    let continent = labels.appendChild(document.createElement("p"));
-                    continent.dataset.continent = questions[i].continent;
-                    continent.textContent = questions[i].continent;
-                }
-            });
-        } else {
-            let continent = labels.appendChild(document.createElement("p"));
-            continent.dataset.continent = questions[i].continent;
-            continent.textContent = questions[i].continent;
-        }
+        let continent = labels.appendChild(document.createElement("p"));
+        continent.dataset.continent = questions[i].continent;
+        continent.textContent = questions[i].continent;
         
     }
     let generatedLabels = labels.querySelectorAll("p");
+    shuffleArray(generatedLabels);
     generatedLabels.forEach((label) => {
         label.draggable = true;
+        label.style.order = getRandomInt(100).toString();
     });
 }
 
@@ -133,6 +134,25 @@ function generateAnswers() {
         score.classList.add("score");
         score.textContent = "0 / 3";
     }
+}
+
+function shuffleArray(array) {
+    let currentIndex = array.length;
+        
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+    
+        // Pick a remaining element...
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+    
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 function hasDuplicates(array) {
