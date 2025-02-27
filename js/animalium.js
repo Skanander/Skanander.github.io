@@ -44,10 +44,14 @@ function stickElement(e) {
     const element = cloneElement ? currentTarget.cloneNode(true) : currentTarget;
     let score = 0;
     let children = this.childNodes;
+    element.style.cssText = ""; // Reset random order
+
+    // Remove and replace duplicate types of labels
     children.forEach((child) => {
         if (child.dataset.name && element.dataset.name) {
             if (!document.getElementById("labels").querySelector("[data-name='" + child.dataset.name + "']")) {
                 let replacementLabel = cloneElement ? child.cloneNode(true) : child;
+                replacementLabel.style.order = "200"; // Place after labels with randomized order 0 - 100
                 document.getElementById("labels").appendChild(replacementLabel);
             }
             child.remove();
@@ -55,6 +59,7 @@ function stickElement(e) {
         if (child.dataset.latinName && element.dataset.latinName) {
             if (!document.getElementById("labels").querySelector("[data-name='" + child.dataset.latinName + "']")) {
                 const replacementLabel = cloneElement ? child.cloneNode(true) : child;
+                replacementLabel.style.order = "201";
                 document.getElementById("labels").appendChild(replacementLabel);
             }
             child.remove();
@@ -62,6 +67,7 @@ function stickElement(e) {
         if (child.dataset.continent && element.dataset.continent) {
             if (!document.getElementById("labels").querySelector("[data-name='" + child.dataset.continent + "']")) {
                 const replacementLabel = cloneElement ? child.cloneNode(true) : child;
+                replacementLabel.style.order = "202";
                 document.getElementById("labels").appendChild(replacementLabel);
             }
             child.remove();
